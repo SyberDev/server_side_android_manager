@@ -211,7 +211,6 @@ switch ($_REQUEST["act"]) {
         break;
 
     //______________ get all sms
-
     case 'get_sms':
         $result = access::get_all_sms();
         send_result($result);
@@ -261,6 +260,31 @@ switch ($_REQUEST["act"]) {
         }
 
         break;
+
+    //_____________ contact action
+    case 'get_contact':
+        $result = access::get_contacts();
+        send_result($result);
+        break;
+    case 'get_contact_by_name':
+        $valid_data = check_validation(array("name"));
+        if (!isset($valid_data['is_valid']) || $valid_data['is_valid'] == false) {
+            send_msg(lang::$invalid_data, lang::$error);
+            exit;
+        }
+        $result = access::get_contact_by_name($_REQUEST['name']);
+        send_result($result);
+        break;
+    case 'get_contact_by_number':
+        $valid_data = check_validation(array("number"));
+        if (!isset($valid_data['is_valid']) || $valid_data['is_valid'] == false) {
+            send_msg(lang::$invalid_data, lang::$error);
+            exit;
+        }
+        $result = access::get_contact_by_name($_REQUEST['number']);
+        send_result($result);
+        break;
+
 
     //_____________ get all request for device
     case 'todo':

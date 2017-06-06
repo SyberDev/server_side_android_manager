@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PublishConfigData" autoUpload="Always" serverName="smartHome">
+    <serverData>
+      <paths name="smartHome">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/" local="$PROJECT_DIR$" web="/" />
+          </mappings>
+          <excludedPaths>
+            <excludedPath path="/admin_panel/bin" />
+            <excludedPath path="/admin_panel/App_Data" />
+            <excludedPath path="/admin_panel/obj" />
+            <excludedPath path="/admin_panel/pages" />
+            <excludedPath path="/admin_panel/plugin" />
+            <excludedPath path="/admin_panel/Properties" />
+            <excludedPath path="/admin_panel/template" />
+            <excludedPath path="/admin_panel/values" />
+            <excludedPath path="/cgi-bin" />
+            <excludedPath local="true" path="$PROJECT_DIR$/admin_panel/bin" />
+            <excludedPath local="true" path="$PROJECT_DIR$/admin_panel/App_Data" />
+            <excludedPath local="true" path="$PROJECT_DIR$/admin_panel/obj" />
+            <excludedPath local="true" path="$PROJECT_DIR$/admin_panel/pages" />
+            <excludedPath local="true" path="$PROJECT_DIR$/admin_panel/plugin" />
+            <excludedPath local="true" path="$PROJECT_DIR$/admin_panel/Properties" />
+            <excludedPath local="true" path="$PROJECT_DIR$/admin_panel/template" />
+            <excludedPath local="true" path="$PROJECT_DIR$/admin_panel/values" />
+            <excludedPath local="true" path="$PROJECT_DIR$/cgi-bin" />
+          </excludedPaths>
+        </serverdata>
+      </paths>
+    </serverData>
+    <option name="myAutoUpload" value="ALWAYS" />
+  </component>
+</project>

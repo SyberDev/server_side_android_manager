@@ -1,0 +1,1 @@
+[17-May-2017 11:32:55 UTC] PHP Fatal error:  Call to a member function prepare() on null in /home/iliasmart/smarthome.iliasmart.com/admin_panel/model/database/data.php on line 61

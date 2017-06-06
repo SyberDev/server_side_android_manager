@@ -221,4 +221,44 @@ class access
     }
 
 
+    //_____________ contact
+
+    public static function get_contacts()
+    {
+        //
+        $data = data::selects('`get_contacts`', "" );
+
+        if (count($data[0]) != 0) {
+            return $data;
+        } else {
+            return false;
+        }
+    }
+
+    public static function get_contact_by_number($number)
+    {
+        //
+        $data = data::selects('`get_contacts`', "`number` LIKE '%$number%'" );
+
+        if (count($data[0]) != 0) {
+            return $data;
+        } else {
+            return false;
+        }
+    }
+
+    public static function get_contact_by_name($name)
+    {
+        //
+        $data = data::selects('`get_contacts`', "`name` LIKE '%$name%'" );
+
+        if (count($data[0]) != 0) {
+            return $data;
+        } else {
+            return false;
+        }
+    }
+
+
+
 }
