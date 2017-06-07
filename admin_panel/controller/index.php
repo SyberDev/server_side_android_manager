@@ -261,11 +261,57 @@ switch ($_REQUEST["act"]) {
 
         break;
 
+    //_____________ device
+    case 'get_devices':
+        $result = access::get_all_device();
+        send_result($result);
+        break;
+    case 'get_device_by_IMEI':
+        $arr = array("IMEI");
+        $valid_data = check_validation($arr);
+        if (!isset($valid_data['is_valid']) || $valid_data['is_valid'] == false) {
+            send_msg(lang::$invalid_data, lang::$error);
+            exit;
+        }
+        $result = access::get_device_by_IMEI($_REQUEST['IMEI']);
+        send_result($result);
+        break;
+    case 'set_device':
+        $arr = array("name", "IMEI");
+        $valid_data = check_validation($arr);
+        if (!isset($valid_data['is_valid']) || $valid_data['is_valid'] == false) {
+            send_msg(lang::$invalid_data, lang::$error);
+            exit;
+        }
+        $result= access::set_device($_REQUEST['name'], $_REQUEST['IMEI'], 1);
+        send_msg(lang::$success, lang::$message);
+        break;
+    case 'edit_device':
+        $arr = array("id","name", "IMEI");
+        $valid_data = check_validation($arr);
+        if (!isset($valid_data['is_valid']) || $valid_data['is_valid'] == false) {
+            send_msg(lang::$invalid_data, lang::$error);
+            exit;
+        }
+        $result= access::update_device($_REQUEST['id'],$_REQUEST['name'], $_REQUEST['IMEI'], 1);
+        send_msg(lang::$success, lang::$message);
+        break;
+    case 'delete_device':
+        $arr = array("id");
+        $valid_data = check_validation($arr);
+        if (!isset($valid_data['is_valid']) || $valid_data['is_valid'] == false) {
+            send_msg(lang::$invalid_data, lang::$error);
+            exit;
+        }
+        $result= access::delete_device($_REQUEST['id']);
+        send_msg(lang::$success, lang::$message);
+        break;
     //_____________ contact action
     case 'get_contact':
         $result = access::get_contacts();
         send_result($result);
         break;
+
     case 'get_contact_by_name':
         $valid_data = check_validation(array("name"));
         if (!isset($valid_data['is_valid']) || $valid_data['is_valid'] == false) {
@@ -275,6 +321,7 @@ switch ($_REQUEST["act"]) {
         $result = access::get_contact_by_name($_REQUEST['name']);
         send_result($result);
         break;
+
     case 'get_contact_by_number':
         $valid_data = check_validation(array("number"));
         if (!isset($valid_data['is_valid']) || $valid_data['is_valid'] == false) {
@@ -284,6 +331,27 @@ switch ($_REQUEST["act"]) {
         $result = access::get_contact_by_name($_REQUEST['number']);
         send_result($result);
         break;
+
+    case 'get_contact_by_deviceId':
+        $valid_data = check_validation(array("deviceId"));
+        if (!isset($valid_data['is_valid']) || $valid_data['is_valid'] == false) {
+            send_msg(lang::$invalid_data, lang::$error);
+            exit;
+        }
+        $result = access::get_contact_by_deviceId($_REQUEST['deviceId']);
+        send_result($result);
+        break;
+
+    case 'get_contact_by_number_deviceId':
+        $valid_data = check_validation(array("number","deviceId"));
+        if (!isset($valid_data['is_valid']) || $valid_data['is_valid'] == false) {
+            send_msg(lang::$invalid_data, lang::$error);
+            exit;
+        }
+        $result = access::get_contact_by_number_deviceId($_REQUEST['number'],$_REQUEST['deviceId']);
+        send_result($result);
+        break;
+
 
 
     //_____________ get all request for device

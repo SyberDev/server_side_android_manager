@@ -140,9 +140,7 @@ class access
         }
     }
 
-
-
-    public static function set_sms($number , $text , $reqnumber ,$smsId , $registerDate , $status , $type , $deviceid , $createdby)
+   public static function set_sms($number , $text , $reqnumber ,$smsId , $registerDate , $status , $type , $deviceid , $createdby)
     {
         return data::insertinto("`sms`", "`id`, `number`, `text`, `reqnumber`,`smsId`, `registerDate` , `status`, `type`, `deviceid`, `createdby`, `creationdate`", "NULL,'$number', '$text', $reqnumber, $smsId , $registerDate , $status , $type , $deviceid , $createdby , CURRENT_TIMESTAMP");
     }
@@ -220,7 +218,6 @@ class access
         return data::delete("`device`", "`id` = $id");
     }
 
-
     //_____________ contact
 
     public static function get_contacts()
@@ -249,7 +246,6 @@ class access
 
     public static function get_contact_by_name($name)
     {
-        //
         $data = data::selects('`get_contacts`', "`name` LIKE '%$name%'" );
 
         if (count($data[0]) != 0) {
@@ -259,6 +255,27 @@ class access
         }
     }
 
+    public static function get_contact_by_deviceId($id)
+    {
+        $data = data::selects('`get_contacts`', "`deviceid` = $id" );
+
+        if (count($data[0]) != 0) {
+            return $data;
+        } else {
+            return false;
+        }
+    }
+
+    public static function get_contact_by_number_deviceId($number,$deviceId)
+    {
+        $data = data::selects('`get_contacts`', "`number` LIKE '%$number%'  and `deviceid` = $deviceId");
+
+        if (count($data[0]) != 0) {
+            return $data;
+        } else {
+            return false;
+        }
+    }
 
 
 }
