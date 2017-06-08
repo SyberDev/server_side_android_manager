@@ -196,9 +196,32 @@ switch ($_REQUEST["act"]) {
             exit;
         }
         $device_id  = access::get_device_by_IMEI($_REQUEST["IMEI"]);
+
       //  echo $device_id[0]["id"];
         if(isset($device_id[0]["id"])){
-            $result =  access::set_sms($_REQUEST["number"] , $_REQUEST["text"], 0 ,$_REQUEST['smsId'],$_REQUEST['registerDate'], 0 , 2 , $device_id[0]["id"] , 1 ) ;
+            $result =  access::set_sms($_REQUEST["number"] , $_REQUEST["text"], 0 ,$_REQUEST['smsId'],$_REQUEST['registerDate'], 0 , 1 , $device_id[0]["id"] , 1 ) ;
+            if($result > 0 && isset($result)){
+                send_msg(lang::$success, lang::$error);
+            }else{
+                send_msg(lang::$failed , lang::$error);
+            }
+        }else{
+                send_msg(lang::$invalid_device, lang::$error);
+        }
+
+        break;
+    case 'sendSms':
+        $arr = array("deviceId","number","text");
+
+        $valid_data = check_validation($arr);
+        if (!isset($valid_data['is_valid']) || $valid_data['is_valid'] == false) {
+            send_msg(lang::$invalid_data, lang::$error);
+            exit;
+        }
+        $device_id  = $_REQUEST["deviceId"];
+      //  echo $device_id[0]["id"];
+        if(isset($device_id[0]["id"])){
+            $result =  access::set_sms($_REQUEST["number"] , $_REQUEST["text"], 0 ,0,null, 0 , 2 , $device_id , 1 ) ;
             if($result > 0 && isset($result)){
                 send_msg(lang::$success, lang::$error);
             }else{
@@ -260,7 +283,6 @@ switch ($_REQUEST["act"]) {
         }
 
         break;
-
     //_____________ device
     case 'get_devices':
         $result = access::get_all_device();
