@@ -189,7 +189,7 @@ switch ($_REQUEST["act"]) {
 
     //_____________ receive sms
     case 'receiveSms':
-        $arr = array("IMEI" , "number", "text" , "smsId" , "registerDate" );
+        $arr = array("IMEI" , "number", "text" , "smsId" , "registerDate");
         $valid_data = check_validation($arr);
         if (!isset($valid_data['is_valid']) || $valid_data['is_valid'] == false) {
             send_msg(lang::$invalid_data, lang::$error);
