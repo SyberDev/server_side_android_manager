@@ -239,11 +239,11 @@ switch ($_REQUEST["act"]) {
         send_result($result);
         break;
     case 'get_sms_recive':
-        $result = access::get_sms_by_type(2);
+        $result = access::get_sms_by_type(1);
         send_result($result);
         break;
     case 'get_sms_send':
-        $result = access::get_sms_by_type(1);
+        $result = access::get_sms_by_type(2);
         send_result($result);
         break;
     case 'delete_sms':
