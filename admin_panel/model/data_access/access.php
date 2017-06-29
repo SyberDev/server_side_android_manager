@@ -277,5 +277,31 @@ class access
         }
     }
 
+    public static function set_contact($name, $deviceId ,$contactid,  $createdby){
+        //INSERT INTO `contact`(`id`, `name`, `contactid`, `deviceid`, `createdby`, `creationdate`) VALUES ([value-1],[value-2],[value-3],[value-4],[value-5],[value-6])
+        return data::insertinto("`contact`","`name`,`contactid`,`deviceid`, `createdby`, `creationdate`", "'$name' , '$contactid' , '$deviceId' , $createdby , CURRENT_TIMESTAMP");
+    }
+
+    public  static function set_phone_number_by_contactId($number, $contactid, $createdby){
+        //INSERT INTO `PhoneNmuber`(`id`, `number`, `contactid`, `creationdate`, `createdby`) VALUES ([value-1],[value-2],[value-3],[value-4],[value-5])
+        return data::insertinto("`PhoneNmuber`","`number`, `contactid`, `createdby`, `creationdate`", "'$number' , '$contactid' , $createdby , CURRENT_TIMESTAMP");
+    }
+
+    public static function get_contact_request_by_deviceId($deviceId){
+
+        $data = data::selects('`get_contacts_todo`', "`deviceid` = $deviceId");
+
+        if (count($data[0]) != 0) {
+            return $data;
+        } else {
+            return false;
+        }
+    }
+
+    public static function edit_contact_cid($id , $contactid){
+        return data::update("contact", "`contactid`= '$contactid'", "`id`= $id");
+    }
+
+
 
 }

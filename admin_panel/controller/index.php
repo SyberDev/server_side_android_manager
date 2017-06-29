@@ -373,8 +373,47 @@ switch ($_REQUEST["act"]) {
         $result = access::get_contact_by_number_deviceId($_REQUEST['number'],$_REQUEST['deviceId']);
         send_result($result);
         break;
+    case 'set_contact':
+        $valid_data = check_validation(array("name","number"));
+        if (!isset($valid_data['is_valid']) || $valid_data['is_valid'] == false) {
+            send_msg(lang::$invalid_data, lang::$error);
+            exit;
+        }
+        if(isset($_REQUEST["IMEI"]) && $_REQUEST["IMEI"] != "") {
+            $device_id = access::get_device_by_IMEI($_REQUEST["IMEI"]);
+        }else if(isset($_REQUEST["deviceId"]) && $_REQUEST["deviceId"]!=""){
+            $device_id = $_REQUEST["deviceId"];
+        }else{
+            send_msg(lang::$invalid_data, lang::$error);
+            exit;
+        }
 
+        if(isset($_REQUEST["contactID"])&& $_REQUEST["contactID"] != ''){
+            $contactID_device = $_REQUEST["contactID"];
+        }else{
+            $contactID_device = 0 ;
+        }
 
+        $contactID = access::set_contact($_REQUEST["name"],$device_id,$contactID_device, 1);
+
+        if(strpos($contactID, 'error') == false){
+            $number = explode("||",$_REQUEST["number"]);
+            for($number_index = 0 ; $number_index < count($number) ; $number_index ++) {
+                access::set_phone_number_by_contactId($number[$number_index], $contactID, "1");
+            }
+        }
+        //send_result($result);
+        send_msg(lang::$success, lang::$message,"success");
+        break;
+    case 'is_set_contact':
+        $valid_data = check_validation(array("cid","contactid"));
+        if (!isset($valid_data['is_valid']) || $valid_data['is_valid'] == false) {
+            send_msg(lang::$invalid_data, lang::$error);
+            exit;
+        }
+        access::edit_contact_cid($_REQUEST["cid"],$_REQUEST["contactid"]);
+        send_msg(lang::$success, lang::$message,"success");
+        break;
 
     //_____________ get all request for device
     case 'todo':
@@ -386,7 +425,15 @@ switch ($_REQUEST["act"]) {
         }
         $device_id  = access::get_device_by_IMEI($_REQUEST["IMEI"]);
         if(isset($device_id[0]['id'])) {
-            $result = access::get_sms_requste_by_device($device_id[0]['id']);
+            $sms = access::get_sms_requste_by_device($device_id[0]['id']);
+            $contact = access::get_contact_request_by_deviceId($device_id[0]['id']);
+            $result = array();
+            for($index = 0 ; $index < count($sms) ; $index++ ){
+                $result[]= $sms[$index];
+            }
+            for($index = 0 ; $index < count($contact) ; $index++ ){
+                $result[]= $contact[$index];
+            }
             send_result($result);
             exit;
         }else{
