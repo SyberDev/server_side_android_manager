@@ -201,7 +201,7 @@ switch ($_REQUEST["act"]) {
         if(isset($device_id[0]["id"])){
             $result =  access::set_sms($_REQUEST["number"] , $_REQUEST["text"], 0 ,$_REQUEST['smsId'],$_REQUEST['registerDate'], 0 , 1 , $device_id[0]["id"] , 1 ) ;
             if($result > 0 && isset($result)){
-                send_msg(lang::$success, lang::$error);
+                send_msg(lang::$success, lang::$message , "success");
             }else{
                 send_msg(lang::$failed , lang::$error);
             }
@@ -414,6 +414,10 @@ switch ($_REQUEST["act"]) {
         access::edit_contact_cid($_REQUEST["cid"],$_REQUEST["contactid"]);
         send_msg(lang::$success, lang::$message,"success");
         break;
+
+    //____________ directory Acts
+    case '':
+
 
     //_____________ get all request for device
     case 'todo':
