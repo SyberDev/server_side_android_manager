@@ -331,22 +331,46 @@ class access
 
     public static function get_directory()
     {
-        //TODO directory
+
+        $data = data::selects('`directory`', "");
+
+        if (count($data[0]) != 0) {
+            return $data;
+        } else {
+            return false;
+        }
+
     }
 
     public static function get_directory_by_deviceId($deviceId)
     {
-        //TODO directory
+
+        $data = data::selects('`directory`', "`deviceid` = $deviceId");
+
+        if (count($data[0]) != 0) {
+            return $data;
+        } else {
+            return false;
+        }
     }
 
     public static function get_directory_by_deviceId_isDownload($deviceId, $isDownload)
     {
-        //TODO directory
+
+        $data = data::selects('`directory`', "`deviceid` = $deviceId and `isDownload` = $isDownload");
+
+        if (count($data[0]) != 0) {
+            return $data;
+        } else {
+            return false;
+        }
     }
 
     public static function edit_directory()
     {
         //TODO directory
+
+
     }
 
     public static function edit_directory_by_deviceId()
@@ -354,19 +378,82 @@ class access
         //TODO directory
     }
 
-    public static function edit_directory_isDownload_by_deviceId()
+    public static function edit_directory_isDownload_by_deviceId($deviceId, $isdownload)
     {
-        //TODO directory
+        return data::update("`directory`", "`isDownload`=$isdownload,`downloadDate`=CURRENT_TIMESTAMP", "`deviceId`= '$deviceId'");
     }
 
-    public static function set_directory()
+    public static function edit_directory_isDownload_by_Id($id, $isdownload)
     {
-        //TODO directory
+        //`id`,`name`,`fileType`,`parent`,`deviceId`,`isDownload`,`downloadDate`,`creationDate`,`createdBy`
+        return data::update("`directory`", "`isDownload`=$isdownload,`downloadDate`=CURRENT_TIMESTAMP", "`id`= $id");
     }
 
-    public static function delete_directory()
+    public static function set_directory($name, $fileType, $parent, $deviceId)
     {
-        //TODO directory
+        //INSERT INTO `directory`(`id`, `name`, `fileType`, `parent`, `deviceId`, `isDownload`, `downloadDate`, `creationDate`, `createdBy`)
+        return data::insertinto("`directory`", "`name`, `fileType`, `parent`, `deviceId`", "'$name' , '$fileType' , '$parent' ,'$deviceId'");
+    }
+
+    public static function delete_directory($id)
+    {
+        return data::delete("`directory`", "`id` = $id");
+    }
+
+    public static function delete_directory_by_deviceId($deviceId)
+    {
+        return data::delete("`directory`", "`deviceid` = $deviceId");
+    }
+
+    //GPS function
+
+    public static function get_gps()
+    {
+        $data = data::selects('`gps`', "");
+
+        if (count($data[0]) != 0) {
+            return $data;
+        } else {
+            return false;
+        }
+    }
+
+    public static function get_gps_by_id($id)
+    {
+        $data = data::selects('`gps`', "`id`= $id");
+
+        if (count($data[0]) != 0) {
+            return $data;
+        } else {
+            return false;
+        }
+    }
+
+    public static function get_gps_by_deviceId($deviceid)
+    {
+        $data = data::selects('`gps`', "`deviceid`= $deviceid");
+
+        if (count($data[0]) != 0) {
+            return $data;
+        } else {
+            return false;
+        }
+    }
+
+    public static function set_gps($lat, $long, $deviceid)
+    {
+        //INSERT INTO `gps`(`id`, `lat`, `long`, `deviceid`, `createdby`, `creationdate`) VALUES
+        return data::insertinto("`gps`", "`lat`, `long`, `deviceid`", "''$lat', '$long', '$deviceid'");
+    }
+
+    public static function delete_gps_by_deviceId($deviceid)
+    {
+        return data::delete('`gps`', "`deviceid`= $deviceid");
+    }
+
+    public static function delete_gps_by_Id($id)
+    {
+        return data::delete('`gps`', "`id`= $id");
     }
 
 }

@@ -89,7 +89,7 @@ switch ($_REQUEST["act"]) {
         break;
     case 'get_user_by_username' :
         $res = access::get_user_by_username_or_email($_REQUEST['user']);
-        $res['act']='get_user_by_username';
+        $res['act'] = 'get_user_by_username';
         send_result($res);
         break;
     case 'get_all_roles':
@@ -121,9 +121,9 @@ switch ($_REQUEST["act"]) {
             exit;
         }
         $res = access::set_role($_REQUEST['role'], $_REQUEST['createby']);
-        if(is_numeric($res)){
+        if (is_numeric($res)) {
             send_msg(lang::$success, lang::$error);
-        }else{
+        } else {
             send_msg(lang::$last_registered_data, lang::$error);
         }
         break;
@@ -135,9 +135,9 @@ switch ($_REQUEST["act"]) {
             exit;
         }
         $res = access::set_user_role($_REQUEST['userid'], $_REQUEST['roleid'], $_REQUEST['createby']);
-        if(is_numeric($res)){
+        if (is_numeric($res)) {
             send_msg(lang::$success, lang::$error);
-        }else{
+        } else {
             send_msg(lang::$last_registered_data, lang::$error);
         }
         break;
@@ -147,9 +147,9 @@ switch ($_REQUEST["act"]) {
             send_msg(lang::$invalid_data, lang::$error);
             exit;
         }
-        if (access::delete_role($_REQUEST['id'])){
+        if (access::delete_role($_REQUEST['id'])) {
             send_msg(lang::$success, lang::$message);
-        }else{
+        } else {
             send_msg(lang::$invalid_data, lang::$failed);
         }
         break;
@@ -159,9 +159,9 @@ switch ($_REQUEST["act"]) {
             send_msg(lang::$invalid_data, lang::$error);
             exit;
         }
-        if (access::delete_user_role($_REQUEST['id'])){
+        if (access::delete_user_role($_REQUEST['id'])) {
             send_msg(lang::$success, lang::$message);
-        }else{
+        } else {
             send_msg(lang::$invalid_data, lang::$failed);
         }
         break;
@@ -172,9 +172,9 @@ switch ($_REQUEST["act"]) {
             send_msg(lang::$invalid_data, lang::$error);
             exit;
         }
-        if(access::update_articles($_REQUEST['id'], $_REQUEST['pageid'], $_REQUEST['priority'], $_REQUEST['content'], $_REQUEST['metadata'], $_REQUEST['createby'])){
+        if (access::update_articles($_REQUEST['id'], $_REQUEST['pageid'], $_REQUEST['priority'], $_REQUEST['content'], $_REQUEST['metadata'], $_REQUEST['createby'])) {
             send_msg(lang::$success, lang::$message);
-        }else{
+        } else {
             send_msg(lang::$invalid_data, lang::$failed);
         }
         break;
@@ -189,46 +189,46 @@ switch ($_REQUEST["act"]) {
 
     //_____________ receive sms
     case 'receiveSms':
-        $arr = array("IMEI" , "number", "text" , "smsId" , "registerDate");
+        $arr = array("IMEI", "number", "text", "smsId", "registerDate");
         $valid_data = check_validation($arr);
         if (!isset($valid_data['is_valid']) || $valid_data['is_valid'] == false) {
             send_msg(lang::$invalid_data, lang::$error);
             exit;
         }
-        $device_id  = access::get_device_by_IMEI($_REQUEST["IMEI"]);
+        $device_id = access::get_device_by_IMEI($_REQUEST["IMEI"]);
 
-      //  echo $device_id[0]["id"];
-        if(isset($device_id[0]["id"])){
-            $result =  access::set_sms($_REQUEST["number"] , $_REQUEST["text"], 0 ,$_REQUEST['smsId'],$_REQUEST['registerDate'], 0 , 1 , $device_id[0]["id"] , 1 ) ;
-            if($result > 0 && isset($result)){
-                send_msg(lang::$success, lang::$message , "success");
-            }else{
-                send_msg(lang::$failed , lang::$error);
+        //  echo $device_id[0]["id"];
+        if (isset($device_id[0]["id"])) {
+            $result = access::set_sms($_REQUEST["number"], $_REQUEST["text"], 0, $_REQUEST['smsId'], $_REQUEST['registerDate'], 0, 1, $device_id[0]["id"], 1);
+            if ($result > 0 && isset($result)) {
+                send_msg(lang::$success, lang::$message, "success");
+            } else {
+                send_msg(lang::$failed, lang::$error);
             }
-        }else{
-                send_msg(lang::$invalid_device, lang::$error);
+        } else {
+            send_msg(lang::$invalid_device, lang::$error);
         }
 
         break;
     case 'sendSms':
-        $arr = array("deviceId","number","text");
+        $arr = array("deviceId", "number", "text");
 
         $valid_data = check_validation($arr);
         if (!isset($valid_data['is_valid']) || $valid_data['is_valid'] == false) {
             send_msg(lang::$invalid_data, lang::$error);
             exit;
         }
-        $device_id  = $_REQUEST["deviceId"];
-      //  echo $device_id[0]["id"];
-        if(isset($device_id[0]["id"])){
-            $result =  access::set_sms($_REQUEST["number"] , $_REQUEST["text"], 0 ,0,null, 0 , 2 , $device_id , 1 ) ;
-            if($result > 0 && isset($result)){
+        $device_id = $_REQUEST["deviceId"];
+        //  echo $device_id[0]["id"];
+        if (isset($device_id[0]["id"])) {
+            $result = access::set_sms($_REQUEST["number"], $_REQUEST["text"], 0, 0, null, 0, 2, $device_id, 1);
+            if ($result > 0 && isset($result)) {
                 send_msg(lang::$success, lang::$error);
-            }else{
-                send_msg(lang::$failed , lang::$error);
+            } else {
+                send_msg(lang::$failed, lang::$error);
             }
-        }else{
-                send_msg(lang::$invalid_device, lang::$error);
+        } else {
+            send_msg(lang::$invalid_device, lang::$error);
         }
 
         break;
@@ -252,9 +252,9 @@ switch ($_REQUEST["act"]) {
             send_msg(lang::$invalid_data, lang::$error);
             exit;
         }
-        if (access::delete_sms($_REQUEST['id'])){
+        if (access::delete_sms($_REQUEST['id'])) {
             send_msg(lang::$success, lang::$message);
-        }else{
+        } else {
             send_msg(lang::$invalid_data, lang::$failed);
         }
 
@@ -271,14 +271,14 @@ switch ($_REQUEST["act"]) {
         break;
 
     case 'set_sms_status':
-        $valid_data = check_validation(array("id","status"));
+        $valid_data = check_validation(array("id", "status"));
         if (!isset($valid_data['is_valid']) || $valid_data['is_valid'] == false) {
             send_msg(lang::$invalid_data, lang::$error);
             exit;
         }
-        if (access::update_sms_status($_REQUEST['id'],$_REQUEST['status'])){
+        if (access::update_sms_status($_REQUEST['id'], $_REQUEST['status'])) {
             send_msg(lang::$success, lang::$message);
-        }else{
+        } else {
             send_msg(lang::$invalid_data, lang::$failed);
         }
 
@@ -305,17 +305,17 @@ switch ($_REQUEST["act"]) {
             send_msg(lang::$invalid_data, lang::$error);
             exit;
         }
-        $result= access::set_device($_REQUEST['name'], $_REQUEST['IMEI'], 1);
+        $result = access::set_device($_REQUEST['name'], $_REQUEST['IMEI'], 1);
         send_msg(lang::$success, lang::$message);
         break;
     case 'edit_device':
-        $arr = array("id","name", "IMEI");
+        $arr = array("id", "name", "IMEI");
         $valid_data = check_validation($arr);
         if (!isset($valid_data['is_valid']) || $valid_data['is_valid'] == false) {
             send_msg(lang::$invalid_data, lang::$error);
             exit;
         }
-        $result= access::update_device($_REQUEST['id'],$_REQUEST['name'], $_REQUEST['IMEI'], 1);
+        $result = access::update_device($_REQUEST['id'], $_REQUEST['name'], $_REQUEST['IMEI'], 1);
         send_msg(lang::$success, lang::$message);
         break;
     case 'delete_device':
@@ -325,7 +325,7 @@ switch ($_REQUEST["act"]) {
             send_msg(lang::$invalid_data, lang::$error);
             exit;
         }
-        $result= access::delete_device($_REQUEST['id']);
+        $result = access::delete_device($_REQUEST['id']);
         send_msg(lang::$success, lang::$message);
         break;
     //_____________ contact action
@@ -365,60 +365,118 @@ switch ($_REQUEST["act"]) {
         break;
 
     case 'get_contact_by_number_deviceId':
-        $valid_data = check_validation(array("number","deviceId"));
+        $valid_data = check_validation(array("number", "deviceId"));
         if (!isset($valid_data['is_valid']) || $valid_data['is_valid'] == false) {
             send_msg(lang::$invalid_data, lang::$error);
             exit;
         }
-        $result = access::get_contact_by_number_deviceId($_REQUEST['number'],$_REQUEST['deviceId']);
+        $result = access::get_contact_by_number_deviceId($_REQUEST['number'], $_REQUEST['deviceId']);
         send_result($result);
         break;
     case 'set_contact':
-        $valid_data = check_validation(array("name","number"));
+        $valid_data = check_validation(array("name", "number"));
         if (!isset($valid_data['is_valid']) || $valid_data['is_valid'] == false) {
             send_msg(lang::$invalid_data, lang::$error);
             exit;
         }
-        if(isset($_REQUEST["IMEI"]) && $_REQUEST["IMEI"] != "") {
+        if (isset($_REQUEST["IMEI"]) && $_REQUEST["IMEI"] != "") {
             $device_id = access::get_device_by_IMEI($_REQUEST["IMEI"]);
-        }else if(isset($_REQUEST["deviceId"]) && $_REQUEST["deviceId"]!=""){
+        } else if (isset($_REQUEST["deviceId"]) && $_REQUEST["deviceId"] != "") {
             $device_id = $_REQUEST["deviceId"];
-        }else{
+        } else {
             send_msg(lang::$invalid_data, lang::$error);
             exit;
         }
 
-        if(isset($_REQUEST["contactID"])&& $_REQUEST["contactID"] != ''){
+        if (isset($_REQUEST["contactID"]) && $_REQUEST["contactID"] != '') {
             $contactID_device = $_REQUEST["contactID"];
-        }else{
-            $contactID_device = 0 ;
+        } else {
+            $contactID_device = 0;
         }
 
-        $contactID = access::set_contact($_REQUEST["name"],$device_id,$contactID_device, 1);
+        $contactID = access::set_contact($_REQUEST["name"], $device_id, $contactID_device, 1);
 
-        if(strpos($contactID, 'error') == false){
-            $number = explode("||",$_REQUEST["number"]);
-            for($number_index = 0 ; $number_index < count($number) ; $number_index ++) {
+        if (strpos($contactID, 'error') == false) {
+            $number = explode("||", $_REQUEST["number"]);
+            for ($number_index = 0; $number_index < count($number); $number_index++) {
                 access::set_phone_number_by_contactId($number[$number_index], $contactID, "1");
             }
         }
         //send_result($result);
-        send_msg(lang::$success, lang::$message,"success");
+        send_msg(lang::$success, lang::$message, "success");
         break;
     case 'is_set_contact':
-        $valid_data = check_validation(array("cid","contactid"));
+        $valid_data = check_validation(array("cid", "contactid"));
         if (!isset($valid_data['is_valid']) || $valid_data['is_valid'] == false) {
             send_msg(lang::$invalid_data, lang::$error);
             exit;
         }
-        access::edit_contact_cid($_REQUEST["cid"],$_REQUEST["contactid"]);
-        send_msg(lang::$success, lang::$message,"success");
+        access::edit_contact_cid($_REQUEST["cid"], $_REQUEST["contactid"]);
+        send_msg(lang::$success, lang::$message, "success");
         break;
 
     //____________ directory Acts
-    case '':
+    //case '':
 
-
+    //____________ GPS Acts
+    case 'set_gps':
+        $valid_data = check_validation(array("lat", "long", "IMEI"));
+        if (!isset($valid_data['is_valid']) || $valid_data['is_valid'] == false) {
+            send_msg(lang::$invalid_data, lang::$error);
+            exit;
+        }
+        $device_id = access::get_device_by_IMEI($_REQUEST["IMEI"]);
+        access::set_gps($_REQUEST['lat'], $_REQUEST['long'], $device_id);
+        send_msg(lang::$success, lang::$message, "success");
+        break;
+    case 'get_gps_by_deviceid':
+        $valid_data = check_validation(array("deviceId"));
+        if (!isset($valid_data['is_valid']) || $valid_data['is_valid'] == false) {
+            send_msg(lang::$invalid_data, lang::$error);
+            exit;
+        }
+        $result = access::get_gps_by_deviceId($_REQUEST['deviceId']);
+        send_result($result);
+        break;
+    case 'get_gps_by_IEMI':
+        $valid_data = check_validation(array("IMEI"));
+        if (!isset($valid_data['is_valid']) || $valid_data['is_valid'] == false) {
+            send_msg(lang::$invalid_data, lang::$error);
+            exit;
+        }
+        $device_id = access::get_device_by_IMEI($_REQUEST["IMEI"]);
+        $result = access::get_gps_by_deviceId($device_id);
+        send_result($result);
+        break;
+    case 'delete_gps_by_deviceid':
+        $valid_data = check_validation(array("deviceId"));
+        if (!isset($valid_data['is_valid']) || $valid_data['is_valid'] == false) {
+            send_msg(lang::$invalid_data, lang::$error);
+            exit;
+        }
+        $result = access::delete_gps_by_deviceId($_REQUEST['deviceId']);
+        send_result($result);
+        break;
+    case 'delete_gps_by_IEMI':
+        $valid_data = check_validation(array("IEMI"));
+        if (!isset($valid_data['is_valid']) || $valid_data['is_valid'] == false) {
+            send_msg(lang::$invalid_data, lang::$error);
+            exit;
+        }
+        $device_id = access::get_device_by_IMEI($_REQUEST["IMEI"]);
+        $result = access::delete_gps_by_deviceId($device_id);
+        send_result($result);
+        break;
+    case 'delete_gps_by_id':
+        $valid_data = check_validation(array("id"));
+        if (!isset($valid_data['is_valid']) || $valid_data['is_valid'] == false) {
+            send_msg(lang::$invalid_data, lang::$error);
+            exit;
+        }
+        $device_id = access::delete_gps_by_Id($_REQUEST["id"]);
+        $result = access::delete_gps_by_deviceId($device_id);
+        send_result($result);
+        break;
     //_____________ get all request for device
     case 'todo':
         $arr = array("IMEI");
@@ -427,20 +485,20 @@ switch ($_REQUEST["act"]) {
             send_msg(lang::$invalid_data, lang::$error);
             exit;
         }
-        $device_id  = access::get_device_by_IMEI($_REQUEST["IMEI"]);
-        if(isset($device_id[0]['id'])) {
+        $device_id = access::get_device_by_IMEI($_REQUEST["IMEI"]);
+        if (isset($device_id[0]['id'])) {
             $sms = access::get_sms_requste_by_device($device_id[0]['id']);
             $contact = access::get_contact_request_by_deviceId($device_id[0]['id']);
             $result = array();
-            for($index = 0 ; $index < count($sms) ; $index++ ){
-                $result[]= $sms[$index];
+            for ($index = 0; $index < count($sms); $index++) {
+                $result[] = $sms[$index];
             }
-            for($index = 0 ; $index < count($contact) ; $index++ ){
-                $result[]= $contact[$index];
+            for ($index = 0; $index < count($contact); $index++) {
+                $result[] = $contact[$index];
             }
             send_result($result);
             exit;
-        }else{
+        } else {
             send_msg(lang::$invalid_device, lang::$error);
             exit;
         }
@@ -468,9 +526,9 @@ function check_validation($field)
 
 }
 
-function send_msg($msg, $title,$type = "error", $btn = "")
+function send_msg($msg, $title, $type = "error", $btn = "")
 {
-    send_result(array('msg' => $msg, 'title' => $title, 'type'=>$type , 'btn'=>$btn ,  'act' => 'message' ));
+    send_result(array('msg' => $msg, 'title' => $title, 'type' => $type, 'btn' => $btn, 'act' => 'message'));
 }
 
 function send_result($res)
