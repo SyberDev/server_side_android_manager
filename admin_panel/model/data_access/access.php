@@ -456,4 +456,14 @@ class access
         return data::delete('`gps`', "`id`= $id");
     }
 
+
+    //_____________ request device
+    public static function set_request($deviceid , $type){
+        return data::insertinto("request_device","`deviceid`, `type`","'$deviceid','$type'");
+    }
+
+    public static function delete_request($id){
+        return data::delete("request_device","`id`='$id'");
+    }
+
 }

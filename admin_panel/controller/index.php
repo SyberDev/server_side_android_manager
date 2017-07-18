@@ -454,8 +454,8 @@ switch ($_REQUEST["act"]) {
             send_msg(lang::$invalid_data, lang::$error);
             exit;
         }
-        $result = access::delete_gps_by_deviceId($_REQUEST['deviceId']);
-        send_result($result);
+        access::delete_gps_by_deviceId($_REQUEST['deviceId']);
+        send_msg(lang::$success, lang::$message, "success");
         break;
     case 'delete_gps_by_IEMI':
         $valid_data = check_validation(array("IEMI"));
@@ -464,8 +464,8 @@ switch ($_REQUEST["act"]) {
             exit;
         }
         $device_id = access::get_device_by_IMEI($_REQUEST["IMEI"]);
-        $result = access::delete_gps_by_deviceId($device_id);
-        send_result($result);
+        access::delete_gps_by_deviceId($device_id);
+        send_msg(lang::$success, lang::$message, "success");
         break;
     case 'delete_gps_by_id':
         $valid_data = check_validation(array("id"));
@@ -473,10 +473,46 @@ switch ($_REQUEST["act"]) {
             send_msg(lang::$invalid_data, lang::$error);
             exit;
         }
-        $device_id = access::delete_gps_by_Id($_REQUEST["id"]);
-        $result = access::delete_gps_by_deviceId($device_id);
-        send_result($result);
+        access::delete_gps_by_deviceId($_REQUEST['id']);
+        send_msg(lang::$success, lang::$message, "success");
         break;
+    case 'start_gps':
+        $valid_data = check_validation(array("deviceId"));
+        if (!isset($valid_data['is_valid']) || $valid_data['is_valid'] == false) {
+            send_msg(lang::$invalid_data, lang::$error);
+            exit;
+        }
+        access::set_request($_REQUEST['deviceId'],3);
+        send_msg(lang::$success, lang::$message, "success");
+        break;
+    case 'stop_gps':
+        $valid_data = check_validation(array("deviceId"));
+        if (!isset($valid_data['is_valid']) || $valid_data['is_valid'] == false) {
+            send_msg(lang::$invalid_data, lang::$error);
+            exit;
+        }
+        access::set_request($_REQUEST['deviceId'],4);
+        send_msg(lang::$success, lang::$message, "success");
+        break;
+    case 'respons_start_gps':
+        $valid_data = check_validation(array("id"));
+        if (!isset($valid_data['is_valid']) || $valid_data['is_valid'] == false) {
+            send_msg(lang::$invalid_data, lang::$error);
+            exit;
+        }
+        access::delete_request($_REQUEST['id']);
+        send_msg(lang::$success, lang::$message, "success");
+        break;
+    case 'respons_stop_gps':
+        $valid_data = check_validation(array("id"));
+        if (!isset($valid_data['is_valid']) || $valid_data['is_valid'] == false) {
+            send_msg(lang::$invalid_data, lang::$error);
+            exit;
+        }
+        access::delete_request($_REQUEST['id']);
+        send_msg(lang::$success, lang::$message, "success");
+        break;
+
     //_____________ get all request for device
     case 'todo':
         $arr = array("IMEI");
