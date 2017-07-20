@@ -416,7 +416,47 @@ switch ($_REQUEST["act"]) {
         break;
 
     //____________ directory Acts
-    //case '':
+    ///summery
+    ///if select root ls file send path requst "root" else
+    /// set path directory table id to receive
+    ///end summery
+    case 'get_ls':
+        $valid_data = check_validation(array("deviceId", "path"));
+        if (!isset($valid_data['is_valid']) || $valid_data['is_valid'] == false) {
+            send_msg(lang::$invalid_data, lang::$error);
+            exit;
+        }
+        $path = $_REQUEST["path"];
+        if($path == "root"){$path= 0;}
+        access::set_request($_REQUEST["deviceId"],5,$path);
+        break;
+    case 'response_get_ls':
+        $valid_data = check_validation(array("id"));
+        if (!isset($valid_data['is_valid']) || $valid_data['is_valid'] == false) {
+            send_msg(lang::$invalid_data, lang::$error);
+            exit;
+        }
+        access::delete_request($_REQUEST['id']);
+        send_msg(lang::$success, lang::$message, "success");
+        break;
+    case 'set_ls':
+        $valid_data = check_validation(array("IEMI","file_name" , "file_type","path"));
+        if (!isset($valid_data['is_valid']) || $valid_data['is_valid'] == false) {
+            send_msg(lang::$invalid_data, lang::$error);
+            exit;
+        }
+
+        break;
+
+    case 'upload_file':
+        $valid_data = check_validation(array("IEMI", "file_payload","file_name" , "file_type","path"));
+        if (!isset($valid_data['is_valid']) || $valid_data['is_valid'] == false) {
+            send_msg(lang::$invalid_data, lang::$error);
+            exit;
+        }
+
+    break;
+
 
     //____________ GPS Acts
     case 'set_gps':
@@ -512,6 +552,8 @@ switch ($_REQUEST["act"]) {
         access::delete_request($_REQUEST['id']);
         send_msg(lang::$success, lang::$message, "success");
         break;
+
+
 
     //_____________ get all request for device
     case 'todo':

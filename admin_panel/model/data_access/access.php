@@ -458,8 +458,12 @@ class access
 
 
     //_____________ request device
-    public static function set_request($deviceid , $type){
-        return data::insertinto("request_device","`deviceid`, `type`","'$deviceid','$type'");
+    public static function set_request($deviceid , $type ,$reqid = null){
+        if($reqid==null) {
+            return data::insertinto("request_device", "`deviceid`, `type`", "'$deviceid','$type'");
+        }else{
+            return data::insertinto("request_device", "`deviceid`, `type`, `reqid`", "'$deviceid','$type' , '$reqid'");
+        }
     }
 
     public static function delete_request($id){
