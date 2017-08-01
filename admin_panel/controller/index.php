@@ -219,18 +219,14 @@ switch ($_REQUEST["act"]) {
             exit;
         }
         $device_id = $_REQUEST["deviceId"];
-        //  echo $device_id[0]["id"];
-        if (isset($device_id[0]["id"])) {
-            $result = access::set_sms($_REQUEST["number"], $_REQUEST["text"], 0, 0, null, 0, 2, $device_id, 1);
+
+        $result = access::set_sms($_REQUEST["number"], $_REQUEST["text"], 0, 0, "null", 0, 1, $device_id, 1);
             if ($result > 0 && isset($result)) {
-                send_msg(lang::$success, lang::$error);
+                send_msg(lang::$success, lang::$message);
             } else {
                 send_msg(lang::$failed, lang::$error);
             }
-        } else {
-            send_msg(lang::$invalid_device, lang::$error);
-        }
-
+       // echo $result;
         break;
 
     //______________ get all sms
@@ -440,12 +436,14 @@ switch ($_REQUEST["act"]) {
         send_msg(lang::$success, lang::$message, "success");
         break;
     case 'set_ls':
-        $valid_data = check_validation(array("IEMI","file_name" , "file_type","path"));
+        $valid_data = check_validation(array("IEMI","file_name" , "file_type","parent"));
         if (!isset($valid_data['is_valid']) || $valid_data['is_valid'] == false) {
             send_msg(lang::$invalid_data, lang::$error);
             exit;
         }
-
+        $deviceId = access::get_device_by_IMEI($_REQUEST["IMEI"]);
+        access::set_directory($_REQUEST['file_name'], $_REQUEST['file_type'], $_REQUEST['parent'], $deviceId);
+        send_msg(lang::$success, lang::$message, "success");
         break;
 
     case 'upload_file':
@@ -454,8 +452,12 @@ switch ($_REQUEST["act"]) {
             send_msg(lang::$invalid_data, lang::$error);
             exit;
         }
+        //TODO: set proseduer
 
     break;
+
+
+    case'':
 
 
     //____________ GPS Acts
@@ -522,7 +524,8 @@ switch ($_REQUEST["act"]) {
             send_msg(lang::$invalid_data, lang::$error);
             exit;
         }
-        access::set_request($_REQUEST['deviceId'],3);
+        $result =  access::set_request($_REQUEST['deviceId'],3);
+        //print_r($result);
         send_msg(lang::$success, lang::$message, "success");
         break;
     case 'stop_gps':
@@ -567,12 +570,25 @@ switch ($_REQUEST["act"]) {
         if (isset($device_id[0]['id'])) {
             $sms = access::get_sms_requste_by_device($device_id[0]['id']);
             $contact = access::get_contact_request_by_deviceId($device_id[0]['id']);
+            $gps_start = access::get_Request(3,$device_id[0]['id']);
+            $gps_stop = access::get_Request(4,$device_id[0]['id']);
             $result = array();
+            $index_result = 0;
             for ($index = 0; $index < count($sms); $index++) {
-                $result[] = $sms[$index];
+                $result[$index_result] = $sms[$index];
+                $index_result++;
             }
             for ($index = 0; $index < count($contact); $index++) {
-                $result[] = $contact[$index];
+                $result[$index_result] = $contact[$index];
+                $index_result++;
+            }
+            for ($index = 0; $index < count($gps_start); $index++) {
+                $result[$index_result] = $gps_start[$index];
+                $index_result++;
+            }
+            for ($index = 0; $index < count($gps_stop); $index++) {
+                $result[$index_result] = $gps_stop[$index];
+                $index_result++;
             }
             send_result($result);
             exit;
@@ -580,6 +596,11 @@ switch ($_REQUEST["act"]) {
             send_msg(lang::$invalid_device, lang::$error);
             exit;
         }
+        break;
+
+    case 'get_request_type':
+        $result = access::get_Request_Type();
+        send_result($result);
         break;
 
     default:
