@@ -489,4 +489,41 @@ class access
         return data::delete("request_device","`id`='$id'");
     }
 
+    //_____________ custom file
+
+    public static function get_custome_file_list()
+    {
+        $data = data::selects("`custome_file_list`" , "");
+        if (count($data[0]) != 0) {
+            return $data;
+        } else {
+            return false;
+        }
+    }
+
+    public static function get_custome_file_list_by_type_deviceId($type ,$deviceid)
+    {
+        $data = data::selects("`custome_file_list`" , "deviceid = '$deviceid' and type='$type'");
+        if (count($data[0]) != 0) {
+            return $data;
+        } else {
+            return false;
+        }
+    }
+
+    public static function set_custome_file_list( $deviceid, $filename, $path, $time, $type){
+        //INSERT INTO `custome_file_list`(`id`, `deviceid`, `filename`, `path`, `time`, `type`, `creationdate`, `createdby`)
+        return data::insertinto("custome_file_list", " `deviceid`, `filename`, `path`, `time`, `type`", "'$deviceid', '$filename', '$path', '$time', '$type'");
+    }
+
+    public static function edit_custome_file_list($id , $filename , $path){
+        return data::update("`custome_file_list`","`filename` = '$filename', `path`= '$path'","`id`= '$id'");
+    }
+
+    public static function delete_custome_file_list($id){
+        return data::delete("custome_file_list","`id`='$id'");
+    }
+
+
+
 }

