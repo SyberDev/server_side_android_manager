@@ -417,8 +417,11 @@ switch ($_REQUEST["act"]) {
 
     //____________ directory Acts
     ///summery
-    ///if select root ls file send path requst "root" else
-    /// set path directory table id to receive
+    /// if path = '' then return device store
+    /// if return = -1 then does not exits path
+    /// if return = 0 then path is empty
+    /// if return = -2 then have error
+
     ///end summery
     case 'get_ls':
         $valid_data = check_validation(array("deviceId", "path"));
@@ -439,6 +442,7 @@ switch ($_REQUEST["act"]) {
         access::delete_request($_REQUEST['id']);
         send_msg(lang::$success, lang::$message, "success");
         break;
+    /// if file_type = empty then the row is folder
     case 'set_ls':
         $valid_data = check_validation(array("IEMI","file_name" , "file_type","parent"));
         if (!isset($valid_data['is_valid']) || $valid_data['is_valid'] == false) {
