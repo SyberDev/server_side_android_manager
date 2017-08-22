@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="abeb341c-577b-48a5-afcb-86ebd825272d" name="ZarinValueChain" url="http://w3pa-value-chain.com">
+        <fileTransfer host="w3pa-value-chain.com" port="21">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" />
+          </advancedOptions>
+          <option name="port" value="21" />
+        </fileTransfer>
+      </webServer>
+      <webServer id="e3565a5f-023e-4c11-a13b-6b5bdd306fba" name="elecStore" url="http://elec-store.com/">
+        <fileTransfer host="elec-store.com" port="21">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="21" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

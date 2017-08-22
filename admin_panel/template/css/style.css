@@ -1,0 +1,215 @@
+
+#MainPage {
+    position: relative;
+}
+
+#HeaderPageName {
+    width: 100%;
+    height: 120px;
+    background: #3d4e5e;
+    text-align: center;
+    color: #fff;
+    font-size: 25px;
+}
+
+.rtl {
+    direction: rtl;
+}
+
+.modal {
+    direction: rtl;
+}
+
+.saveForm .form-group {
+    width: 48%;
+    margin: 5px 0.5%;
+}
+
+.saveForm .form-group select,
+.saveForm .form-group input {
+    width: 100%;
+}
+
+.saveForm .form-group input[type=radio] {
+    width: initial;
+}
+
+.border {
+    padding-bottom: 23px;
+    border-bottom: 1px solid #0D3349;
+    border-top: 1px solid #0D3349;
+}
+
+body .container.body .right_col {
+    min-height: 98vh;
+}
+
+/* TABLE DIV */
+#headerDiv > #count {
+
+    width: 3%;
+}
+
+#AddProgram {
+
+}
+
+#headerDiv > div {
+
+    display: inline-block;
+
+    width: 18%;
+
+    background: #fff;
+
+    text-align: center;
+
+    transform: translateY(7ch);
+
+    font-size: 17px;
+}
+
+#headerDiv > div:last-child {}
+
+#headerDiv > div:first-child {
+    width: 4%;
+}
+
+#descTableDiv .table > tbody > tr > td:nth-child(odd), #datetableDiv .table > tbody > tr > td:nth-child(odd) {
+    background-color: rgba(214, 214, 214, 0.29);
+}
+
+#descTableDiv .table > tbody > tr > td:nth-child(odd), #datetableDiv .table > tbody > tr > td {
+    color: #000;
+}
+
+#headerDiv > div:last-child {
+
+    width: 53%;
+
+    transform: none;
+}
+
+#headerDiv {
+
+}
+
+#descTableDiv {
+
+    display: inline-block;
+
+    width: 44.3%;
+
+    /* position: relative; */
+}
+#descTableDiv > table tr td {
+    width: 25%;
+    color: #000;
+}
+
+#descTableDiv > table tr td:last-child {
+    width: 5%;
+}
+
+#descTableDiv > table tr td:first-child {
+    width: 5%;
+}
+
+#descTableDiv > table {
+    /* -webkit-transform: translateY(2.5ch); */
+    -moz-transform: translateY(2.5ch);
+    -ms-transform: translateY(2.5ch);
+    -o-transform: translateY(2.5ch);
+    /* transform: translateY(2.5ch); */
+    position: absolute;
+    top: 0;
+    width: 43.4%;
+    top: 108px;
+}
+
+#datetableDiv {
+
+    display: inline-block;
+
+    width: 53%;
+
+    overflow: auto;
+
+    padding-top: 50px;
+}
+
+#datetableDiv table th {
+    -webkit-transform: rotate(70deg) translate(-19px);
+    -moz-transform: rotate(70deg) translate(-19px);
+    -ms-transform: rotate(70deg) translate(-19px);
+    -o-transform: rotate(70deg) translate(-19px);
+    transform: rotate(70deg) translate(-19px);
+    border: none;
+}
+
+#datetableDiv table p {
+    min-height:18px;
+    margin:0;
+}
+
+#datetableDiv > table {
+
+    border-top: none;
+}
+
+.table td {
+    text-align: center;
+}
+
+/*tooltips*/
+
+.tooltip-inner {
+    display: inline;
+    background-color: darkred !important;
+}
+
+.tooltip.top .tooltip-arrow {
+    border-top-color: darkred !important;
+}
+
+/* table style AddDPS */
+#AddDPS > tbody tr:nth-child(odd) {
+
+    background-color: #012801;
+
+    color: #fff;
+
+    font-weight: 800;
+}
+
+#AddDPS > tbody tr:nth-child(even) {
+
+    background-color: rgb(111, 21, 21);
+
+    color: #fff;
+
+    font-weight: 800;
+}
+
+.Rotate {
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    transform: rotate(90deg);
+    text-align: center;
+}
+
+.table th {
+    text-align: center;
+}
+
+.table {
+    text-align: center;
+}
+#SRReceiver td {
+    text-align: right;
+}
+#deliverDate{
+    width:30%;
+}

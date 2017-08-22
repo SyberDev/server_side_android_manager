@@ -1,0 +1,41 @@
+body {
+    direction: rtl;
+}
+
+.container-fluid {
+    padding: 0 3%;
+}
+
+.table, .table tr td, .table tr th {
+    text-align: center;
+}
+
+.DateNumb {
+    margin-top: -4%;
+
+}
+
+.no-paddingBottom {
+    padding-bottom: 0;
+}
+
+.no-paddingTop {
+    padding-top: 0;
+}
+
+.table.rightTable th {
+    text-align: center;
+}
+
+.table.rightTable td {
+    text-align: right;
+}
+
+.rotate{
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    transform: rotate(90deg);
+    padding: 2% 0 !important;
+}

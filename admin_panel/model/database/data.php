@@ -2,13 +2,15 @@
 class data
 {
 	private $conn;
+	private static $database ;
 	private static function connection_string()
 	{
 
 		$servername = "localhost";
-		$username = "iliasmar_home";
+		$username = "wpavalue_zarin";
 		$password = "123123$#@!";
-		$database="iliasmar_smart_home";
+		$database="wpavalue_zarin_crystal";
+		self::$database = $database;
 		try {
 			$con =  new PDO("mysql:host=$servername;dbname=$database", $username, $password);
 			$con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -170,7 +172,7 @@ class data
 			$cmd = "SELECT $cols FROM $table WHERE $where";
 		}
 
-		//echo $cmd ; exit;
+		//	echo $cmd ; exit;
 		try {
 
 			$stmt = $con->prepare($cmd);
@@ -249,7 +251,7 @@ class data
 		try
 		{
 			$sql="UPDATE $table SET $value WHERE $where";
-			//echo $sql ; exit;
+			//echo $sql;exit;
 			$con->exec($sql);
 			$result = "1";
 		}
@@ -288,10 +290,121 @@ class data
 		//return  mysql_query($con,"DELETE FROM $table WHERE $where");
 
 	}
-	public static function execute_non_qury()
+	public static function execute_non_qury($cmd)
 	{
+		$con=self::connection_open();
 
+
+		//	echo $cmd ; exit;
+		try {
+
+			$stmt = $con->prepare($cmd);
+			$stmt->execute();
+			$result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
+			$r=$stmt->fetchAll();
+
+			self::connection_close();
+			return $r;
+
+		}
+
+		catch(PDOException $e) {
+			return $row= "Error: " . $e->getMessage();
+		}
 	}
+
+	public static function get_structure_table($table)
+	{
+		$con=self::connection_open();
+
+		$cmd = "DESCRIBE `$table`";
+
+
+		try {
+
+			$stmt = $con->prepare($cmd);
+			$stmt->execute();
+			$result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
+			$r=$stmt->fetchAll();
+
+			self::connection_close();
+			return $r;
+
+		}
+
+		catch(PDOException $e) {
+			return $row= "Error: " . $e->getMessage();
+		}
+	}
+
+	public static function get_tables()
+	{
+		$con=self::connection_open();
+
+		$cmd = "SELECT table_name FROM information_schema.tables where table_schema='".self::$database."'";
+
+		try {
+
+			$stmt = $con->prepare($cmd);
+			$stmt->execute();
+			$result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
+			$r=$stmt->fetchAll();
+
+			self::connection_close();
+			return $r;
+
+		}
+
+		catch(PDOException $e) {
+			return $row= "Error: " . $e->getMessage();
+		}
+	}
+	public static function get_views()
+	{
+		$con=self::connection_open();
+
+		$cmd = "SHOW FULL TABLES IN ".self::$database." WHERE TABLE_TYPE LIKE 'VIEW';";
+
+		try {
+
+			$stmt = $con->prepare($cmd);
+			$stmt->execute();
+			$result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
+			$r=$stmt->fetchAll();
+
+			self::connection_close();
+			return $r;
+
+		}
+
+		catch(PDOException $e) {
+			return $row= "Error: " . $e->getMessage();
+		}
+	}
+	public static function get_comment($table)
+	{
+		$con=self::connection_open();
+
+		$cmd = "show full columns from `$table`";
+
+		try {
+
+			$stmt = $con->prepare($cmd);
+			$stmt->execute();
+			$result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
+			$r=$stmt->fetchAll();
+
+			self::connection_close();
+			return $r;
+
+		}
+
+		catch(PDOException $e) {
+			return $row= "Error: " . $e->getMessage();
+		}
+	}
+
+
 	public static function execute_reader()
 	{
 

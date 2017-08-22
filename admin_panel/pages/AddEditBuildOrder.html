@@ -1,0 +1,551 @@
+<link rel="stylesheet" href="plugin/DatePicker/css/datepicker.css">
+<div data-ng-app="" data-ng-init="title='build order'">
+    <div class="page-title">
+        <div class="title_left">
+            <h3 id="title">
+                <small id="tiny_title" data-ng-bind="title"></small>
+            </h3>
+        </div>
+
+        <div class="title_right">
+        </div>
+    </div>
+</div>
+<div class="clearfix"></div>
+
+<div class="row">
+    <div class="col-xs-12 saveForm" id="buildForm">
+        <div class="col-xs-4 col-md-2 pull-left">
+            <label for="date">تاریخ</label>
+            <input type="text" class="form-control" id="date" disabled>
+        </div>
+        <div class="col-xs-4 col-md-2 pull-right">
+            <label for="number">شماره سفارش</label>
+            <input type="text" class="form-control" id="number" disabled>
+        </div>
+        <table style="margin-top: 80px" class="table table-striped table-bordered" id="AddBO">
+            <tbody id="TBODY">
+            <tr>
+                <th>بارکد</th>
+                <th>شرح</th>
+                <th>نمونه</th>
+                <th>تراش</th>
+                <th>تعداد</th>
+                <th>بسته بندی</th>
+                <th>تاریخ تحویل</th>
+                <th>توضیحات</th>
+            </tr>
+            <tr>
+                <td><select onchange="products_connection.get_by_ID(this);" type="text" id="productID_0"
+                            class="form-control"></select>
+                    <input type="hidden" value="false" id="checkproductID_0">
+                </td>
+                <td><input type="text" id="comment_0" class="form-control" disabled></td>
+                <td><select type="text" id="sample_0" class="form-control"
+                            onchange="checkVerification(this.id , 'empty')"></select>
+                    <input type="hidden" value="false" id="checksample_0"></td>
+                <td><select type="text" disabled id="shavingID_0" class="form-control"></select></td>
+                <td><input type="number" id="count_0" class="form-control"
+                           onkeyup="checkVerification(this.id , 'numeral')">
+                    <input type="hidden" value="false" id="checkcount_0"></td>
+                <td><select type="text" id="packingID_0" class="form-control"></select></td>
+                <td><input type="text" id="deliverDate_0" class="form-control"
+                           onkeyup="checkVerification(this.id , 'empty')">
+                    <input type="hidden" value="false" id="checkdeliverDate_0"></td>
+                <td><input type="text" id="description_0" class="form-control"></td>
+                <td>
+                    <div class="btn btn-primary" onclick="addNewRow()" id="SaveBtn">جدید</div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+        <div class="col-xs-6 border pull-right">
+            <h3>مشخصات مشتری</h3>
+            <div class="col-xs-6 pull-right">
+                <label for="SelectCustomer">مشتری را انتخاب کنید</label>
+                <select onchange="GetCustomer(this.value)" id="SelectCustomer" class="form-control">
+
+                </select>
+                <input type="hidden" value="false" id="checkSelectCustomer"></td>
+            </div>
+            <div class="col-xs-6">
+                <div style="margin-top: 24px;margin-right: -3%;" id="btnCancell" class="btn btn-success btn-block"
+                     onclick="EditCustomer(this)">ثبت مشتری جدید
+                </div>
+            </div>
+            <div class="col-xs-12 saveForm" id="saveForm">
+
+                <div class="form-inline">
+                    <div class="form-group">
+                        <label for="TypeC">نوع مشتری</label>
+                        <select disabled onchange="SelectCustomerType(this.value)" id="TypeC" class="form-control">
+                            <option value="real">حقیقی</option>
+                            <option value="legal">حقوقی</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="Name">نام</label>
+                        <input disabled type="text" id="Name" class="form-control"
+                               onkeyup="checkVerification(this.id , 'name')">
+                        <input type="hidden" value="true" id="checkName">
+                    </div>
+                </div>
+
+                <div class="form-inline">
+
+                    <div class="form-group">
+                        <label for="LastName">نام خانوادگی</label>
+                        <input disabled class="form-control" type="text" id="LastName"
+                               onkeyup="checkVerification(this.id , 'name')">
+                        <input type="hidden" value="true" id="checkLastName">
+                    </div>
+                    <div class="form-group">
+                        <label for="FatherName">نام پدر</label>
+                        <input disabled class="form-control" type="text" id="FatherName"
+                               onkeyup="checkVerification(this.id , 'name')">
+                        <input type="hidden" value="true" id="checkFatherName">
+                    </div>
+                </div>
+
+                <div class="form-inline">
+                    <div class="form-group">
+                        <label for="NationalCode">کد ملی</label>
+                        <input disabled class="form-control" type="text" id="NationalCode"
+                               onkeyup="checkVerification(this.id , 'NationalCode')">
+                        <input type="hidden" value="true" id="checkNationalCode">
+                    </div>
+                    <div class="form-group">
+                        <label for="DetailedCode">کد تفصیلی</label>
+                        <input disabled type="text" id="DetailedCode" class="form-control"
+                               onkeyup="checkVerification(this.id , 'numeral')">
+                        <input type="hidden" value="true" id="checkDetailedCode">
+                    </div>
+                </div>
+
+
+                <div class="form-inline">
+                    <div class="form-group">
+                        <label for="PostalCode">کد پستی</label>
+                        <input disabled class="form-control" type="text" id="PostalCode"
+                               onkeyup="checkVerification(this.id , 'zipcode')">
+                        <input type="hidden" value="true" id="checkPostalCode">
+                    </div>
+                    <div class="form-group">
+                        <label for="Fax">فکس</label>
+                        <input disabled type="text" id="Fax" class="form-control"
+                               onkeyup="checkVerification(this.id , 'numeral')">
+                        <input type="hidden" value="true" id="checkFax">
+                    </div>
+                </div>
+
+
+                <div class="form-inline">
+
+                    <div class="form-group">
+                        <label for="Email">ایمیل</label>
+                        <input disabled class="form-control" type="text" id="Email"
+                               onkeyup="checkVerification(this.id , 'email')">
+                        <input type="hidden" value="true" id="checkEmail">
+                    </div>
+                    <div class="form-group">
+                        <label for="BankAccount">حساب بانکی</label>
+                        <input disabled type="text" id="BankAccount" class="form-control"
+                               onkeyup="checkVerification(this.id , 'numeral')">
+                        <input type="hidden" value="true" id="checkBankAccount">
+                    </div>
+                </div>
+
+
+                <div class="form-inline">
+                    <div class="form-group">
+                        <label for="BankName">نام بانک</label>
+                        <input disabled class="form-control" type="text" id="BankName"
+                               onkeyup="checkVerification(this.id , 'empty')">
+                        <input type="hidden" value="true" id="checkBankName">
+                    </div>
+                    <div class="form-group">
+                        <label for="Branch">شعبه</label>
+                        <input disabled type="text" id="Branch" class="form-control"
+                               onkeyup="checkVerification(this.id , 'empty')">
+                        <input type="hidden" value="true" id="checkBranch">
+                    </div>
+                </div>
+
+
+                <div class="form-inline">
+
+                    <div class="form-group">
+                        <label for="ShbaBank">شماره شبا</label>
+                        <input disabled class="form-control" type="text" id="ShbaBank"
+                               onkeyup="checkVerification(this.id , 'numeral')">
+                        <input type="hidden" value="true" id="checkShbaBank">
+                    </div>
+                    <div class="form-group">
+                        <label for="Address">آدرس</label>
+                        <input disabled class="form-control" type="text" id="Address"
+                               onkeyup="checkVerification(this.id , 'empty')">
+                        <input type="hidden" value="true" id="checkAddress">
+                    </div>
+                </div>
+
+
+                <div class="form-inline">
+
+                    <div class="form-group">
+                        <label for="Tel">تلفن</label>
+                        <input disabled class="form-control" type="text" id="Tel"
+                               onkeyup="checkVerification(this.id , 'phone')">
+                        <input type="hidden" value="true" id="checkTel">
+                    </div>
+                    <div class="form-group">
+                        <label for="Mobile">موبایل</label>
+                        <input disabled class="form-control" type="text" id="Mobile"
+                               onkeyup="checkVerification(this.id , 'mobile')">
+                        <input type="hidden" value="true" id="checkMobile">
+                    </div>
+                </div>
+
+
+                <input id="CreateBy" type="hidden">
+                <input id="orderID" type="hidden">
+
+                <input id="LAST_NAME" data-realID="Type" type="hidden">
+                <input id="EFH" data-realID="EconomicCode" type="hidden">
+
+                <p id="Error" style="color : darkred"></p>
+                <div onclick="SaveCustomer()" id="CustomerSave" class="btn btn-primary btn-block" style="display: none">
+                    ثبت
+                    مشتری جدید
+                </div>
+
+            </div>
+        </div>
+        <div class="col-xs-6 border">
+            <h3>نحوه تسویه</h3>
+            <div id="settlementForm">
+
+                <div class="form-inline">
+
+                    <div class="form-group" id="settlementType">
+                        <label>
+                            <input type="radio" checked value="1" name="pay"> نقد
+                        </label>
+                        <label>
+                            <input type="radio" value="0" name="pay"> چک مدت دار
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-inline">
+                    <div class="form-group">
+                        <label for="perPayment">پیش پرداخت</label>
+                        <input id="perPayment" onkeyup="checkVerification(this.id , 'empty')" class="form-control"
+                               type="number">
+                        <input type="hidden" value="false" id="checkperPayment">
+                    </div>
+                    <div class="form-group">
+                        <label for="checkNumber">شماره چک</label>
+                        <input id="checkNumber" onkeyup="checkVerification(this.id , 'empty')" class="form-control"
+                               type="number">
+                        <input type="hidden" value="false" id="checkcheckNumber">
+                    </div>
+                </div>
+
+                <div class="form-inline">
+                    <div class="form-group" id="deliverAfterSettlement">
+                        <label><input type="radio" value="0" checked name="deliver"> تحویل بعد از تسویه</label>
+
+                        <label><input type="radio" value="1" name="deliver"> تحویل قبل از تسویه</label>
+                    </div>
+                </div>
+
+                <div class="form-inline" id="transfer">
+
+                </div>
+
+
+            </div>
+        </div>
+        <input id="ID" type="hidden">
+
+        <s></s>
+        <div class="clearfix"></div>
+        <div class="btn btn-primary btn-lg" onclick="saveOrder()">ثبت اطلاعات</div>
+
+    </div>
+</div>
+
+
+<script src="plugin/dateConvertor/DateConvertor.js"></script>
+<script src="js/deliveryType/connection_deliverType.js"></script>
+<script src="js/products/connection_products.js"></script>
+<script src="js/buildOrder/showForm.js"></script>
+<script src="js/customers/CustomerAddEdit.js"></script>
+<script src="js/customers/connection_customer.js"></script>
+<script src="js/buildOrder/connection_orderItem.js"></script>
+<script src="js/buildOrder/connection_orderCounter.js"></script>
+<script src="js/buildOrder/connection_order.js"></script>
+<script src="js/shaving/connection_shaving.js"></script>
+<script src="js/packing/connection_packing.js"></script>
+<script src="js/Dish/connection_Dish.js"></script>
+<!--DatePicker-->
+<script src="plugin/DatePicker/js/jalali.js"></script>
+<script src="plugin/DatePicker/js/calendar.js"></script>
+<script src="plugin/DatePicker/js/calendar-setup.js"></script>
+<script src="plugin/DatePicker/js/calendar-fa.js"></script>
+
+<script>
+
+    document.getElementById('CreateBy').value = userDetails.ID;
+
+    //-------- Event handler -------
+    //----Enter KEY
+    document.getElementById('AddBO').addEventListener('keyup', function (e) {
+        if (e.keyCode == '13') {
+            addNewRow();
+        }
+    });
+    // ----- block all key for datePicker
+    document.getElementById('deliverDate_0').addEventListener('keypress', function (e) {
+        if (e.KeyCode != 9) { //---- tab keycode
+            e.preventDefault()
+        }
+    });
+
+    // ---- Add-row
+    var Rowcounter = 0;
+    function addNewRow() {
+        // ---- validate Data
+        checkVerification('productID_' + Rowcounter, 'empty');
+        checkVerification('sample_' + Rowcounter, 'empty');
+        checkVerification('count_' + Rowcounter, 'numeral');
+        checkVerification('deliverDate_' + Rowcounter, 'empty');
+        var check = document.querySelectorAll('#AddBO input[type="hidden"]');
+        var Flag = true;
+        for (var i = 0; i < check.length; i++) {
+            if (check[i].value == 'false') {
+                Flag = false;
+                $('#AddBO [data-original-title]').tooltip('show');
+                break;
+            }
+        }
+        // if valid set new row
+        if (Flag) {
+            Rowcounter++;
+            var SaveBtn = document.getElementById('SaveBtn');
+            SaveBtn.parentNode.removeChild(SaveBtn);
+            var tr = document.createElement('tr');
+            var tag =
+                '<td><select type="text" onchange="products_connection.get_by_ID(this)" id="productID_' + Rowcounter + '" class="form-control"></select>' +
+                '<input type="hidden" value="false" id="checkproductID_' + Rowcounter + '">' +
+                '</td>' +
+                '<td><input type="text" disabled id="comment_' + Rowcounter + '" class="form-control"></td>' +
+                '<td><select type="text"  onchange="checkVerification(this.id , ' + "'empty'" + ')" id="sample_' + Rowcounter + '" class="form-control"></select>' +
+                '<input type="hidden" value="false" id="checksample_' + Rowcounter + '"></td>' +
+                '<td><select type="text" disabled id="shavingID_' + Rowcounter + '" class="form-control"></select></td>' +
+                '<td><input type="number" onkeyup="checkVerification(this.id , ' + "'numeral'" + ')" id="count_' + Rowcounter + '" class="form-control">' +
+                '<input type="hidden" value="false" id="checkcount_' + Rowcounter + '"></td>' +
+                '<td><select type="text"  id="packingID_' + Rowcounter + '" class="form-control"></select></td>' +
+                '<td><input type="text" onkeyup="checkVerification(this.id , ' + "'empty'" + ')" id="deliverDate_' + Rowcounter + '" class="form-control">' +
+                '<input type="hidden" value="false" id="checkdeliverDate_' + Rowcounter + '"></td>' +
+                '<td><input type="text" id="description_' + Rowcounter + '" class="form-control"></td>' +
+                '<td><div class="btn btn-primary" onclick="addNewRow()" id="SaveBtn">جدید</div> </td>';
+            tr.innerHTML = tag;
+            document.getElementById('TBODY').appendChild(tr);
+            getAllSelectTag();
+            setTimeout(function () {
+                Calendar.setup({
+                    inputField: "deliverDate_" + Rowcounter,   // id of the input field
+                    button: "inputpicker",   // trigger for the calendar (button ID)
+                    ifFormat: "%Y/%m/%d",       // format of the input field
+                    dateType: 'jalali',
+                    weekNumbers: false
+                });
+            }, 100);
+
+
+            // ----- block all key for datePicker
+            document.getElementById('deliverDate_' + Rowcounter).addEventListener('keypress', function (e) {
+                if (e.KeyCode != 9) { //---- tab keycode
+                    e.preventDefault()
+                }
+            });
+
+        }
+    }
+
+    /*    // ----set and Edit
+     function Save() {
+     setForm('buildForm', 'buildorder_set', customer_connection.url);
+     }*/
+
+    //GetEditData('id', {act: 'buildorder_get_by_ID'}, BOControllerURL);
+
+
+    // ----- get All Customer for Select
+
+    customer_connection.getSelect();
+
+    function GetCustomer(ID) {
+        ajax.sender_data_json_by_url_callback(customer_connection.controller_url, {
+            act: 'customer_get_by_ID',
+            ID: ID
+        }, fillFormCustomer)
+    }
+
+
+    function EditCustomer(elem) {
+        var check = document.querySelectorAll('#saveForm .form-group input[type="hidden"]');
+        for (var i = 0; i < check.length; i++) {
+            check[i].value = 'false';
+        }
+        elem.setAttribute('onclick', 'DontEdit(this)');
+        elem.innerText = 'انصراف';
+        $('#saveForm input[disabled] ,#saveForm select[disabled]').removeAttr('disabled');
+        $('#saveForm input , #saveForm select').val('');
+        document.getElementById('SelectCustomer').setAttribute('disabled', 'disabled');
+        document.getElementById('CustomerSave').style.cssText = '';
+    }
+
+
+    function DontEdit(elem) {
+        elem.innerText = 'ثبت مشتری جدید';
+        elem.setAttribute('onclick', 'EditCustomer(this)');
+        document.getElementById('CustomerSave').style.display = 'none';
+        $('#SelectCustomer').removeAttr('disabled');
+        var inputs = document.querySelectorAll('#saveForm input, #saveForm select');
+        for (var i = 0; i < inputs.length; i++) {
+            inputs[i].setAttribute('disabled', 'disabled');
+        }
+
+        var check = document.querySelectorAll('#saveForm .form-group input[type="hidden"]');
+        for (var i = 0; i < check.length; i++) {
+            check[i].value = 'true';
+        }
+    }
+
+    // ------ selects Tag
+    function getAllSelectTag() {
+        $('#sample_' + Rowcounter).load('values/selectValue/sampelValue.html');
+
+        shaving_connection.get();
+        packing_connection.get();
+        products_connection.get();
+
+    }
+
+    getAllSelectTag();
+    deliverType_connection.get();
+
+
+    // ----- for change barcode
+    var Chengedselect;
+
+
+    // ------- for date and number input
+    orderCounter_connection.get();
+
+    function resetCustomer() {
+        var inputs = document.querySelectorAll('#saveForm input , #saveForm select');
+        for (var i = 0; i < inputs.length; i++) {
+            inputs[i].value = '';
+        }
+        document.getElementById('SelectCustomer').value = '';
+        //--------btn reset form
+        var btn = document.getElementById('btnCancell');
+        DontEdit(btn);
+    }
+
+
+    /// ------- save func
+    function saveOrder() {
+
+        //----check row Data
+        for (var i = 0; i <= Rowcounter; i++) {
+            checkVerification('productID_' + i, 'empty');
+            checkVerification('sample_' + i, 'empty');
+            checkVerification('count_' + i, 'numeral');
+            checkVerification('deliverDate_' + i, 'empty');
+        }
+        var check = document.querySelectorAll('#AddBO input[type="hidden"]');
+        var Flag = true;
+        for (var i = 0; i < check.length; i++) {
+            if (check[i].value == 'false') {
+                Flag = false;
+                $('#AddBO [data-original-title]').tooltip('show');
+                break;
+            }
+        }
+        //------ end check row Data
+
+        //---- check customer and settlement Type
+        checkVerification('SelectCustomer', 'empty');
+        checkVerification('checkNumber', 'empty');
+        checkVerification('perPayment', 'empty');
+        var customerCheck = document.getElementById('checkSelectCustomer').value;
+        var checkcheckNumber = document.getElementById('checkcheckNumber').value;
+        var checkperPayment = document.getElementById('checkperPayment').value;
+        if (customerCheck == 'false' || checkcheckNumber == 'fasle' || checkperPayment == 'false') {
+            Flag = false;
+        }
+        // if valid
+        if (Flag) {
+            var number = document.getElementById('number').value;
+            var date = GetTmeStamp('date');
+            var customerID = document.getElementById('SelectCustomer').value;
+            var settlementType = document.querySelector('#settlementType input:checked').value;
+            var checkNumber = document.getElementById('checkNumber').value;
+            var perPayment = document.getElementById('perPayment').value;
+            var createdBy = document.getElementById('CreateBy').value;
+            var deliverTypeID = document.querySelector('#transfer input:checked').value;
+            var deliverAfterSettlement = document.querySelector('#deliverAfterSettlement input:checked').value;
+
+
+            order_connection.set(number, date, customerID, settlementType, checkNumber, perPayment, deliverAfterSettlement, deliverTypeID, createdBy);
+
+            // ---- update counter order
+            ajax.sender_data_json_by_url_callback(orderCounter_connection.controller_url, {"act": "orderCounter_get"}, updateOrderCounter, "POST");
+        }
+    }
+
+    function saveOrderItems() {
+        var i = 0;
+        var loop = function () {
+            if (i <= Rowcounter) {
+                setTimeout(function () {
+                    var orderID = document.getElementById('orderID').value;
+                    var productID = document.getElementById('productID_' + i).value;
+                    var comment = document.getElementById('comment_' + i).value;
+                    var sample = document.getElementById('sample_' + i).value;
+                    var count = document.getElementById('count_' + i).value;
+                    var packingID = document.getElementById('packingID_' + i).value;
+                    var deliverDate = GetTmeStamp('deliverDate_' + i);
+                    var description = document.getElementById('description_' + i).value;
+                    var createdBy = document.getElementById('CreateBy').value;
+
+                    orderItem_connection.set(orderID, productID, comment, sample, count, packingID, deliverDate, description, createdBy);
+                    i++;
+                    loop();
+                }, 100);
+            }
+        };
+        loop();
+    }
+
+    function updateOrderCounter(Data) {
+        Data = Data[0].number;
+        Data = parseInt(Data) + 1;
+        orderCounter_connection.edit_by_ID('1', Data);
+    }
+
+
+    // Date picker
+    Calendar.setup({
+        inputField: "deliverDate_0",   // id of the input field
+        button: "inputpicker",   // trigger for the calendar (button ID)
+        ifFormat: "%Y/%m/%d",       // format of the input field
+        dateType: 'jalali',
+        weekNumbers: false
+    });
+</script>
