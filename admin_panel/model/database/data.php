@@ -7,9 +7,9 @@ class data
 	{
 
 		$servername = "localhost";
-		$username = "wpavalue_zarin";
+		$username = "iliasmar_home";
 		$password = "123123$#@!";
-		$database="wpavalue_zarin_crystal";
+		$database="iliasmar_smart_home";
 		self::$database = $database;
 		try {
 			$con =  new PDO("mysql:host=$servername;dbname=$database", $username, $password);

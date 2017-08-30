@@ -1,4 +1,51 @@
+#phoneBook{
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -ms-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    transition: all 0.5s;
+    width: 0;
+    overflow: hidden;
+    height: 41vh;
+    position: absolute;
+    background: #334a5f;
+    z-index: 2000;
+    border-top-right-radius: 26%;
+    left: 0;
+    padding-top: 3%;
+}
+#phoneBook > div{
+    overflow: auto;
+    width:100%;
+}
+#phoneBook ul {
 
+    list-style-type: none;
+}
+#phoneBook ul li:hover{
+    background-color: rgba(142, 155, 167, 0.69);
+    color: white;
+    cursor: pointer;
+}
+#phoneBook ul li {
+
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    -ms-transition: all 0.2s;
+    -o-transition: all 0.2s;
+    transition: all 0.2s;
+    background-color: #fff;
+
+    padding: 0.5%;
+
+    margin: 2%;
+
+    padding-right: 4%;
+
+    border-top-right-radius: 11px;
+
+    border-bottom-right-radius: 11px;
+}
 #MainPage {
     position: relative;
 }

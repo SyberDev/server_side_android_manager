@@ -6,10 +6,10 @@ function CreateLoader(Main) {
     var img = document.createElement('img');
     div.setAttribute('class', 'loader');
     if (Main != null) {
-        div.style.cssText = 'position: absolute;width:100%;height:100%;    background-color: rgba(247, 247, 247, 0.98);z-index:999999999999;top:0;left:0;background-image: url(template/build/images/loader.gif);background-position: center 66px;background-repeat: no-repeat;';
+        div.style.cssText = 'position: absolute;width:100%;height:100%;    background-color: rgba(255, 255, 255, 0.98);z-index:999999999999;top:0;left:0;background-image: url(template/build/images/loader.gif);background-position: center 66px;background-repeat: no-repeat;';
         document.getElementById('MainPage').appendChild(div);
     } else {
-        div.style.cssText = 'position: fixed;width:100%;height:100%;    background-color: rgba(247, 247, 247, 0.98);z-index:999999999999;top:0;left:0;background-image: url(template/build/images/loader.gif);background-position: center;background-repeat: no-repeat;';
+        div.style.cssText = 'position: fixed;width:100%;height:100%;    background-color: rgba(255, 255, 255, 0.98);z-index:999999999999;top:0;left:0;background-image: url(template/build/images/loader.gif);background-position: center;background-repeat: no-repeat;';
         document.body.appendChild(div);
     }
 }
@@ -28,7 +28,6 @@ setTimeout(function () {
 },8000);
 //------ EndLoader
 
-__require("plugin/angularjs/angular.min.js");
 __require("plugin/global/main.js");
 __require("plugin/network/ajax.js");
 __require("plugin/lang/lang.js");

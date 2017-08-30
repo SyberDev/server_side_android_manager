@@ -1,0 +1,62 @@
+<% var page_title = "sent_sms"; %>
+<% var page_desc = "List"; %>
+<% var btn = [{name: __lang.translate('addNew') , attribute:{name: 'onclick' , value:'Newsms()'}}] %>
+
+<div class="page-title">
+    <div class="title_left">
+        <h3 id="title"><%= page_title %>
+            <small id="tiny_title"><%= page_desc %></small>
+        </h3>
+    </div>
+
+    <div class="title_right">
+    </div>
+</div>
+<div class="clearfix"></div>
+
+<div class="row">
+    <div class="col-xs-12 col-md-10 col-md-push-1">
+        <div id="PGrid">
+
+
+        </div>
+
+        <div class="option">
+            <div class="form-group">
+                <label>
+                    <span><%= __lang.translate('auto_refresh') %></span>
+                    <input type="checkbox"
+                           onchange="AutoRefresh(this , loadrecived ,'get_sms_send' , [{name: __lang.translate('addNew') ,attribute:[{name: 'onclick' , value:'Newsms()'}]}]  )"
+                           id="AutoRefresh">
+                </label>
+                <div class="btn btn-primary"
+                     onclick="loadrecived('get_sms_send' , [{name: __lang.translate('addNew') , attribute:[{name: 'onclick' , value:'Newsms()'}]}] )">
+                    <%= __lang.translate('refresh') %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="TextModal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" style="direction: rtl" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title"><%= __lang.translate('Text_Message') %></h4>
+            </div>
+            <div id="ModalBody" class="modal-body">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal"><%= __lang.translate('Close') %>
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+
+</div><!-- /.modal -->
+
+
+<% $(document).ready(function(){setTimeout(function(){loadrecived('get_sms_send' , [{name: __lang.translate('addNew') , attribute:[{name: 'onclick' , value:'Newsms()'}]}] );},500)}) %>

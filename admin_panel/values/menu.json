@@ -1,4 +1,61 @@
 {
-
+  "items":[ {
+    "name":"General",
+    "items":[{
+      "icon":"fa fa-comments",
+      "name":"SMS",
+      "items":[{
+        "link":"#pages/sms_inbox",
+        "name":"Inbox"
+      },{
+        "link":"#pages/sms_outbox",
+        "name":"outbox"
+      },{
+        "link":"#pages/sms_new",
+        "name":"New"
+      }
+      ]
+    },{
+      "icon":"fa fa-volume-control-phone",
+      "name":"Contact",
+      "items":[{
+        "link":"#pages/contact_list",
+        "name":"list"
+      },{
+        "link":"#pages/contact_new",
+        "name":"AddNew"
+      }]
+    },{
+      "icon":"fa fa-file",
+      "name":"Files",
+      "items":[{
+        "link":"#pages/file_gallery",
+        "name":"Gallery"
+      },{
+        "link":"#pages/file_file_explorer",
+        "name":"file explorer"
+      }]
+    },{
+      "icon":"fa fa-camera",
+      "name":"Camera",
+      "items":[{
+        "link":"#pages/camera_take_photo",
+        "name":"take photo"
+      }]
+    },{
+      "icon":"fa fa-microphone",
+      "name":"Voice",
+      "items":[{
+        "link":"#pages/voice_voice_record",
+        "name":"voice Record"
+      }]
+    },{
+      "icon":"fa fa-desktop",
+      "name":"Monitor",
+      "items":[{
+        "link":"#pages/monitor_screenshot",
+        "name":"Screen shot"
+      }]
+    }]
+  }]
 }
-

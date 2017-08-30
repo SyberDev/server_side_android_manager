@@ -1,3 +1,44 @@
 ﻿{
-  
+  "":"",
+  "monitor_screenshot":"تصویر نمایشگر",
+
+  "voice_voice_record":"ضبط صدا",
+
+  "camera_take_photo":"کار با دوربین",
+
+  "file_file_explorer":"همه فایل ها",
+  "file_gallery":"گالری تصاویر",
+
+  "contact_new":"افزودن خاطب جدید",
+  "contact_list":"لیست مخاطبین",
+
+  "sms_new":"ارسال پیامک جدید",
+  "sms_outbox":"پیامک ارسالی",
+  "sms_inbox":"پیامک دریافتی",
+
+  "Screen shot":"تصویر نمایشگر",
+  "Monitor":"نمایشگر",
+
+  "voice Record":"ضبط صدا",
+  "Voice":"صدا",
+
+  "take photo":"ثبت تصویر",
+  "Camera":"دوربین",
+
+  "file explorer":"همه فایل ها ",
+  "Gallery":"گالری",
+  "Files":"فایل",
+
+  "AddNew":"افرودن",
+  "list":"لیست",
+  "Contact":"مخاطب",
+
+  "New":"ارسال جدید",
+  "outbox":"ارسالی",
+  "Inbox":"دریافتی",
+  "SMS":"پیامک",
+
+  "GENERAL":" ",
+
+  "":""
 }
