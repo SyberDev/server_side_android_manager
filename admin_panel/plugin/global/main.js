@@ -16,12 +16,12 @@ function set_elem(elem) {
 }
 
 // ---- check login
-var userDetails = {};
-function CheckLogin(CallBack) {
-    if (CallBack == null)
-        CallBack = redirect;
-    ajax.sender_data_json_by_url_callback('controller/controller_global.php', {act: 'check_login'}, CallBack)
-}
+//var userDetails = {};
+//function CheckLogin(CallBack) {
+//    if (CallBack == null)
+//        CallBack = redirect;
+//    ajax.sender_data_json_by_url_callback('controller/controller_global.php', {act: 'check_login'}, CallBack)
+//}
 function redirect(Data) {
     if (Data == undefined || Data == null || Data == '') {
         window.location.href = 'login.html';
@@ -30,11 +30,11 @@ function redirect(Data) {
     }
 }
 
-setInterval(function () {
-    try {
-        CheckLogin();
-    }catch (e){}
-}, 120000);
+//setInterval(function () {
+//    try {
+//        CheckLogin();
+//    }catch (e){}
+//}, 120000);
 
 
 //----- get query string

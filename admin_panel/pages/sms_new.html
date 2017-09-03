@@ -1,10 +1,90 @@
-<!DOCTYPE html>
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title></title>
-</head>
-<body>
+<div data-ng-app="" data-ng-init="title='build order'">
+    <div class="page-title">
+        <div class="title_left">
+            <h3 id="title">
+                <small id="tiny_title" data-ng-bind="title"></small>
+            </h3>
+        </div>
 
-</body>
-</html>
+        <div class="title_right">
+        </div>
+    </div>
+</div>
+<div class="clearfix"></div>
+
+<div class="row">
+    <div class="col-xs-12 col-md-4 col-md-push-4 saveForm" id="SaveForm">
+
+        <!-- <div class="col-xs-12 pull-right">
+             <label for="deviceid">انتخاب دستگاه</label>
+             <select type="text" class="form-control" id="deviceid"></select>
+         </div>-->
+
+        <div class="col-xs-12 pull-right">
+            <label for="number" style="display:block;">مخاطب</label>
+            <input type="text" class="form-control" id="number" style="width:80%;display: inline-block">
+            <div class="btn btn-default" style="width: 18%;margin: 0;padding: 6px 0;" onclick="Contact(this)">
+                <i class="glyphicon glyphicon-user"></i>
+            </div>
+            <div id="phoneBook">
+
+            </div>
+        </div>
+
+        <div class="col-xs-12 pull-right">
+            <label for="text">متن پیام</label>
+            <textarea style="display: block; width: 100%; margin: 10px 0;" cols="12" rows="10" id="text"></textarea>
+        </div>
+        <div class="clearfix"></div>
+        <div onclick="sendSMS()" class="btn btn-primary btn-block">
+            <i class="glyphicon glyphicon-envelope"></i>
+            ارسال
+        </div>
+    </div>
+</div>
+
+
+<script src="js/connection_sms.js"></script>
+<script src="js/connection_contact.js"></script>
+<script src="js/connection_device.js"></script>
+<script src="js/connection_get_contacts.js"></script>
+
+<script>
+
+
+    function sendSMS() {
+        var number = document.getElementById('number').value;
+        var text = document.getElementById('text').value;
+        sms_connection.set(number, text, '0');
+    }
+
+    /*function createDevices(data) {
+     createSelectTags(data, 'deviceid');
+     }*/
+
+    // --- contacts
+    var contact_isshow = false;
+    function Contact(elem) {
+        if (!contact_isshow) {
+            contact_isshow = true;
+            document.getElementById('phoneBook').style.width = '100%';
+            elem.children[0].setAttribute('class', 'glyphicon glyphicon-remove');
+        } else {
+            contact_isshow = false;
+            document.getElementById('phoneBook').style.width = '0%';
+            elem.children[0].setAttribute('class', 'glyphicon glyphicon-user');
+        }
+    }
+
+    function getContactNumb(elem) {
+        document.getElementById('number').value = elem.children[1].innerText;
+        contact_isshow = false;
+        document.getElementById('phoneBook').style.width = '0%';
+        elem.children[0].setAttribute('class', 'glyphicon glyphicon-user');
+    }
+
+    //---- on load
+    /*  ajax.sender_data_json_by_url_callback(device_connection.controller_url, {"act": "device_get"}, createDevices, "POST");*/
+    get_contacts_connection.get()
+
+</script>

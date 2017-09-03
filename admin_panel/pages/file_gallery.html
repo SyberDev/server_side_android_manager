@@ -1,10 +1,26 @@
-<!DOCTYPE html>
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title></title>
-</head>
-<body>
 
-</body>
-</html>
+<link rel="stylesheet" href="plugin/lightbox/src/css/lightbox.css">
+<div data-ng-app="" data-ng-init="title='build order'">
+    <div class="page-title">
+        <div class="title_left">
+            <h3 id="title">
+                <small id="tiny_title" data-ng-bind="title"></small>
+            </h3>
+        </div>
+
+        <div class="title_right">
+        </div>
+    </div>
+</div>
+<div class="clearfix"></div>
+
+<div class="row" id="galleryDiv">
+
+</div>
+
+
+<script src="plugin/lightbox/src/js/lightbox.js"></script>
+<script src="js/connection_custome_file_list.js"></script>
+<script>
+    custome_file_list_connection.get_images();
+</script>

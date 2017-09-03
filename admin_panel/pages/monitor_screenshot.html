@@ -1,10 +1,82 @@
-<!DOCTYPE html>
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title></title>
-</head>
-<body>
+<div data-ng-app="" data-ng-init="title='build order'">
+    <div class="page-title" >
+        <div class="title_left">
+            <h3 id="title">
+                <small id="tiny_title" data-ng-bind="title"></small>
+            </h3>
+        </div>
 
-</body>
-</html>
+        <div class="title_right">
+        </div>
+    </div>
+</div>
+<div class="clearfix"></div>
+
+<div class="row">
+    <div class="col-xs-2 col-xs-push-5">
+        <div class="btn btn-default btn-block" onclick="TakeNew()"><i class="glyphicon glyphicon-camera"></i> ثبت تصویر جدید </div>
+    </div>
+    <div class="col-xs-12">
+        <div id="PGrid">
+
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="DetialModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel"></h4>
+            </div>
+            <div class="modal-body" id="DetailBody" style="text-align: right; font-size: 15px;">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">بستن</button>
+                <button type="button" class="btn btn-primary">ذخیره تغییرات</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="js/connection_custome_file_list.js"></script>
+<script>
+
+
+    custome_file_list_connection.get_by_type_grid(6);
+
+    //------ edit Grid Row
+    function Edit(elem, href) {
+        //  var id = grid_customer.get_field_of_row(elem, 'ID');
+        window.location.href = '#pages/' + href + '?ID=' + id;
+    }
+
+    // ------- delete Grid row
+    function deleteIt(elem, act) {
+        var id = grid_customer.get_field_of_row(elem, 'ID');
+        //    ajax.sender_data_json_by_url_callback( customer_connection.controller_url,{act: act, ID: id},console.log);
+        try {
+            setTimeout(function () {
+
+                gridRefrsh(); //----> this func must write in grid page
+            }, 500);
+        } catch (e) {
+        }
+    }
+
+    function gridRefrsh() {
+        document.getElementById('PGrid').innerHTML = '';
+        custome_file_list_connection.get_by_type_grid(6);
+    }
+
+
+
+    function TakeNew(){
+        ajax.sender_data_json_by_url_callback('controller/index.php', {act:'take_screenshot'}, console.log, "POST");
+    }
+</script>

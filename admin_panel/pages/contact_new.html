@@ -1,10 +1,69 @@
-<!DOCTYPE html>
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title></title>
-</head>
-<body>
+<div data-ng-app="" data-ng-init="title='build order'">
+    <div class="page-title">
+        <div class="title_left">
+            <h3 id="title">
+                <small id="tiny_title" data-ng-bind="title"></small>
+            </h3>
+        </div>
 
-</body>
-</html>
+        <div class="title_right">
+        </div>
+    </div>
+</div>
+<div class="clearfix"></div>
+
+<div class="row">
+    <div class="col-xs-12 col-md-4 col-md-push-4 saveForm" id="SaveForm">
+        <div class="col-xs-12 pull-right">
+            <label for="name">نام</label>
+            <input type="text" class="form-control" id="name">
+        </div>
+
+    <!--    <div class="col-xs-12 pull-right">
+            <label for="deviceid">انتخاب دستگاه</label>
+            <select onchange="getContact(this)" type="text" class="form-control" id="deviceid"></select>
+        </div>
+-->
+        <div class="col-xs-12 pull-right">
+            <label for="contactid">مخاطبین</label>
+            <select type="text" class="form-control" id="contactid">
+                <option>دستگاه را انتخاب کنید</option>
+            </select>
+
+        </div>
+        <input type="hidden" id="createdby" value="0">
+        <div class="clearfix"></div>
+        <div onclick="saveContact()" class="btn btn-primary btn-block">
+            <i class="glyphicon glyphicon-ok"></i>
+            ثبت
+        </div>
+    </div>
+</div>
+
+<script src="js/connection_device.js"></script>
+<script src="js/connection_contact.js"></script>
+
+<script>
+    //document.getElementById('createdby').value = global.userId; todo:
+    function saveContact() {
+        setForm('SaveForm', 'contact_set', contact_connection.controller_url, console.log);
+    }
+
+    function createDevices(data) {
+        createSelectTags(data, 'deviceid');
+    }
+
+
+    function getContact(elem) {
+        var deviceid = elem.value;
+        if (deviceid == '' || deviceid == null) {
+            document.getElementById('contactid').innerHTML = '<option>دستگاه را انتخاب کنید</option>';
+        } else {
+
+        }
+    }
+    //---- on load
+
+    contact_connection.get_by_deviceid();
+
+</script>

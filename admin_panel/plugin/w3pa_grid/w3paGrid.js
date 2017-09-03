@@ -123,7 +123,7 @@ function PSCO_grid(name) {
 
             //____ append
             collapseBtn.appendChild(colapseIcon);
-            collapseBtn.innerHTML += 'Advance Search';
+            collapseBtn.innerHTML += __lang.translate('Advance Search');
             //FastSearchDivider.appendChild(collapseBtn);
 
             /*   //_______search Btn
@@ -139,7 +139,7 @@ function PSCO_grid(name) {
             //_____ search input
             var FastSearch = document.createElement('input');
             FastSearch.setAttribute('class', 'form-control form-inline fastSearch');
-            FastSearch.setAttribute('placeholder', 'Search ...');
+            FastSearch.setAttribute('placeholder', __lang.translate('Search ...'));
             FastSearch.setAttribute('id', this.ContainerID + '_searchBox');
             FastSearch.setAttribute('onkeyup', this.name + '.FastSearch()');
 
@@ -251,10 +251,10 @@ function PSCO_grid(name) {
                 accepetFilterBtn.setAttribute('onclick', this.name + '.AdvanceSearch()');
             }
             accepetFilterBtn.appendChild(accepetFilterIcon);
-            accepetFilterBtn.innerHTML += 'Search';
+            accepetFilterBtn.innerHTML += __lang.translate('Search');
 
             cancelFilterBtn.appendChild(cancelFilterIcon);
-            cancelFilterBtn.innerHTML += 'Remove Filter';
+            cancelFilterBtn.innerHTML += __lang.translate('Remove Filter');
             cancelFilterBtn.setAttribute('onclick', this.name + '.RemoveAdvanceSearch()'); // todo: remove filter of server search
 
             wellDiv.appendChild(accepetFilterBtn);

@@ -6,6 +6,12 @@
 require_once '../model/data_access/access.php';
 require_once '../model/data_access/lang.php';
 require_once 'filing.php';
+require_once '../model/data_access/lang.php';
+require_once 'controller_main_function.php';
+
+ob_start();
+session_cache_expire();
+session_start();
 
 
 define("path_mobile",    "device_");
@@ -15,6 +21,17 @@ if (!isset($_REQUEST["act"])) {
     exit;
 }
 switch ($_REQUEST["act"]) {
+
+    case 'select_device':
+        $f = array('id');
+        $valid_data = check_validation($f);
+        if (!isset($valid_data['is_valid']) || $valid_data['is_valid'] == false) {
+            send_msg(lang::$invalid_data, lang::$error);
+            exit;
+        }
+        $_SESSION["device"]["id"] = $_REQUEST["id"];
+        controller_main_function::send_msg(lang::$success, lang::$message, "success");
+        break;
 
     case 'logout':
         try {
@@ -468,72 +485,78 @@ switch ($_REQUEST["act"]) {
     //_____________ tak photo
 
     case'take_voice':
-        $valid_data = check_validation(array("IMEI"));
-        if (!isset($valid_data['is_valid']) || $valid_data['is_valid'] == false) {
-            send_msg(lang::$invalid_data, lang::$error);
-            exit;
-        }
-        $device_id = access::get_device_by_IMEI($_REQUEST["IMEI"]);
+//        $valid_data = check_validation(array("IMEI"));
+//        if (!isset($valid_data['is_valid']) || $valid_data['is_valid'] == false) {
+//            send_msg(lang::$invalid_data, lang::$error);
+//            exit;
+//        }
+       // $device_id = access::get_device_by_IMEI($_REQUEST["IMEI"]);
+        $device_id = $_SESSION["device"]["id"];
         $id = access::set_custome_file_list($device_id,"null" , "null","null",1);
         access::set_request($device_id,6,$id);
         send_msg(lang::$success, lang::$message, "success");
         break;
 
     case'take_photo_front':
-        $valid_data = check_validation(array("IMEI"));
-        if (!isset($valid_data['is_valid']) || $valid_data['is_valid'] == false) {
-            send_msg(lang::$invalid_data, lang::$error);
-            exit;
-        }
-        $device_id = access::get_device_by_IMEI($_REQUEST["IMEI"]);
+        //        $valid_data = check_validation(array("IMEI"));
+//        if (!isset($valid_data['is_valid']) || $valid_data['is_valid'] == false) {
+//            send_msg(lang::$invalid_data, lang::$error);
+//            exit;
+//        }
+      //  $device_id = access::get_device_by_IMEI($_REQUEST["IMEI"]);
+        $device_id = $_SESSION["device"]["id"];
         $id = access::set_custome_file_list($device_id,"null" , "null","null",2);
         access::set_request($device_id,9,$id);
         send_msg(lang::$success, lang::$message, "success");
         break;
 
     case'take_photo_back':
-        $valid_data = check_validation(array("IMEI"));
-        if (!isset($valid_data['is_valid']) || $valid_data['is_valid'] == false) {
-            send_msg(lang::$invalid_data, lang::$error);
-            exit;
-        }
-        $device_id = access::get_device_by_IMEI($_REQUEST["IMEI"]);
+        //        $valid_data = check_validation(array("IMEI"));
+//        if (!isset($valid_data['is_valid']) || $valid_data['is_valid'] == false) {
+//            send_msg(lang::$invalid_data, lang::$error);
+//            exit;
+//        }
+        //  $device_id = access::get_device_by_IMEI($_REQUEST["IMEI"]);
+        $device_id = $_SESSION["device"]["id"];
         $id = access::set_custome_file_list($device_id,"null" , "null","null",3);
         access::set_request($device_id,10,$id);
         send_msg(lang::$success, lang::$message, "success");
         break;
 
     case'take_video_front':
-        $valid_data = check_validation(array("IMEI"));
-        if (!isset($valid_data['is_valid']) || $valid_data['is_valid'] == false) {
-            send_msg(lang::$invalid_data, lang::$error);
-            exit;
-        }
-        $device_id = access::get_device_by_IMEI($_REQUEST["IMEI"]);
+        //        $valid_data = check_validation(array("IMEI"));
+//        if (!isset($valid_data['is_valid']) || $valid_data['is_valid'] == false) {
+//            send_msg(lang::$invalid_data, lang::$error);
+//            exit;
+//        }
+        //  $device_id = access::get_device_by_IMEI($_REQUEST["IMEI"]);
+        $device_id = $_SESSION["device"]["id"];
         $id = access::set_custome_file_list($device_id,"null" , "null","null",4);
         access::set_request($device_id,7,$id);
         send_msg(lang::$success, lang::$message, "success");
         break;
 
     case'take_video_back':
-        $valid_data = check_validation(array("IMEI"));
-        if (!isset($valid_data['is_valid']) || $valid_data['is_valid'] == false) {
-            send_msg(lang::$invalid_data, lang::$error);
-            exit;
-        }
-        $device_id = access::get_device_by_IMEI($_REQUEST["IMEI"]);
+        //        $valid_data = check_validation(array("IMEI"));
+//        if (!isset($valid_data['is_valid']) || $valid_data['is_valid'] == false) {
+//            send_msg(lang::$invalid_data, lang::$error);
+//            exit;
+//        }
+        //  $device_id = access::get_device_by_IMEI($_REQUEST["IMEI"]);
+        $device_id = $_SESSION["device"]["id"];
         $id = access::set_custome_file_list($device_id,"null" , "null","null",5);
         access::set_request($device_id,8,$id);
         send_msg(lang::$success, lang::$message, "success");
         break;
 
     case'take_screenshot':
-        $valid_data = check_validation(array("IMEI"));
-        if (!isset($valid_data['is_valid']) || $valid_data['is_valid'] == false) {
-            send_msg(lang::$invalid_data, lang::$error);
-            exit;
-        }
-        $device_id = access::get_device_by_IMEI($_REQUEST["IMEI"]);
+        //        $valid_data = check_validation(array("IMEI"));
+//        if (!isset($valid_data['is_valid']) || $valid_data['is_valid'] == false) {
+//            send_msg(lang::$invalid_data, lang::$error);
+//            exit;
+//        }
+        //  $device_id = access::get_device_by_IMEI($_REQUEST["IMEI"]);
+        $device_id = $_SESSION["device"]["id"];
         $id = access::set_custome_file_list($device_id,"null" , "null","null",6);
         access::set_request($device_id,11,$id);
         send_msg(lang::$success, lang::$message, "success");

@@ -1,10 +1,52 @@
-<!DOCTYPE html>
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title></title>
-</head>
-<body>
+<div data-ng-app="" data-ng-init="title='build order'">
+    <div class="page-title" >
+        <div class="title_left">
+            <h3 id="title">
+                <small id="tiny_title" data-ng-bind="title"></small>
+            </h3>
+        </div>
 
-</body>
-</html>
+        <div class="title_right">
+        </div>
+    </div>
+</div>
+<div class="clearfix"></div>
+
+<div class="row">
+    <div class="col-xs-12">
+        <div id="PGrid">
+
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="DetialModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel"></h4>
+            </div>
+            <div class="modal-body" id="DetailBody" style="text-align: right; font-size: 15px;">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">بستن</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="js/connection_sms.js"></script>
+<script>
+
+    sms_connection.get_by_type_grid(1);
+
+
+    function gridRefrsh() {
+        document.getElementById('PGrid').innerHTML = '';
+        sms_connection.get_by_type_grid(1);
+    }
+</script>

@@ -1,5 +1,17 @@
 ﻿{
   "":"",
+  "Search ...":"جست و جو ...",
+
+  "show":"نمایش",
+  "filename":"نام فایل",
+
+  "creationdate":"تاریخ ثبت",
+  "name":"نام",
+
+  "number":"شماره",
+  "text":"متن",
+  "registerDate":"تاریخ ثبت",
+
   "monitor_screenshot":"تصویر نمایشگر",
 
   "voice_voice_record":"ضبط صدا",

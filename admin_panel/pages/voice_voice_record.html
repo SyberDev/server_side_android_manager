@@ -1,10 +1,125 @@
-<!DOCTYPE html>
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title></title>
-</head>
-<body>
+<link rel="stylesheet" href="plugin/voiceRecorderUI/css/style.css">
 
-</body>
-</html>
+<div data-ng-app="" data-ng-init="title='build order'">
+    <div class="page-title">
+        <div class="title_left">
+            <h3 id="title">
+                <small id="tiny_title" data-ng-bind="title"></small>
+            </h3>
+        </div>
+
+        <div class="title_right">
+        </div>
+    </div>
+</div>
+<div class="clearfix"></div>
+<div class="wrapper">
+    <div class="button-wrapper">
+        <div class="button" id="backbtn"></div>
+        <div class="button" onclick="record()">
+            <svg class="button-svg" viewBox="0 0 24 24">
+                <path d="M12 15c1.66 0 2.99-1.34 2.99-3l.01-6c0-1.66-1.34-3-3-3s-3 1.34-3 3v6c0 1.66 1.34 3 3 3zm5.3-3c0 3-2.54 5.1-5.3 5.1s-5.3-2.1-5.3-5.1h-1.7c0 3.42 2.72 6.23 6 6.72v3.28h2v-3.28c3.28-.48 6-3.3 6-6.72h-1.7z"/>
+                <path d="M0 0h24v24h-24z" fill="none"/>
+            </svg>
+        </div>
+    </div>
+    <div id="FormRecord" style="display: none;padding-top: 150px">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-12 col-md-4 col-md-push-4 saveForm" id="SaveForm">
+                    <div class="col-xs-12 pull-right">
+                        <label style="color:#fff" for="filename">نام فایل</label>
+                        <input type="text" class="form-control" id="filename">
+                    </div>
+                    <div class="col-xs-12 pull-right">
+                        <label style="color:#fff" for="number">تعداد</label>
+                        <input type="text" class="form-control" id="number2">
+                    </div>
+                    <div class="col-xs-12 pull-right">
+                        <label style="color:#fff" for="number">تعداد</label>
+                        <input type="text" class="form-control" id="number">
+                    </div>
+                    <div class="col-xs-12">
+                        <div class="btn btn-default btn-block">
+                            ضبط
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row" style="padding-top: 10%">
+    <div class="col-xs-12">
+        <div id="PGrid">
+
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="DetialModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel"></h4>
+            </div>
+            <div class="modal-body" id="DetailBody" style="text-align: right; font-size: 15px;">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">بستن</button>
+                <button type="button" class="btn btn-primary">ذخیره تغییرات</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script src="js/connection_custome_file_list.js"></script>
+<script>
+
+
+    custome_file_list_connection.get_by_type_grid(1);
+
+    //------ edit Grid Row
+    function Edit(elem, href) {
+        //  var id = grid_customer.get_field_of_row(elem, 'ID');
+        window.location.href = '#pages/' + href + '?ID=' + id;
+    }
+
+    // ------- delete Grid row
+    function deleteIt(elem, act) {
+        var id = grid_customer.get_field_of_row(elem, 'ID');
+        //    ajax.sender_data_json_by_url_callback( customer_connection.controller_url,{act: act, ID: id},console.log);
+        try {
+            setTimeout(function () {
+
+                gridRefrsh(); //----> this func must write in grid page
+            }, 500);
+        } catch (e) {
+        }
+    }
+
+    function gridRefrsh() {
+        document.getElementById('PGrid').innerHTML = '';
+        custome_file_list_connection.get_by_type_grid(1);
+    }
+
+
+    // ---- voice recorder
+    var recIsShow = false;
+    function record() {
+        if(!recIsShow) {
+            recIsShow = true;
+            document.getElementById('backbtn').classList.add('scaleR');
+            document.getElementById('FormRecord').style.display = 'block';
+        }else{
+            recIsShow = false;
+            document.getElementById('backbtn').classList.remove('scaleR');
+            document.getElementById('FormRecord').style.display = 'none';
+        }
+    }
+</script>
