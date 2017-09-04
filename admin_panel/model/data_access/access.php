@@ -439,11 +439,21 @@ class access
             return false;
         }
     }
+    public static function get_gps_by_deviceId_des($deviceid)
+    {
+        $data = data::selects('`gps`', "`deviceid`= $deviceid ORDER BY `id` DESC LIMIT 1");
+
+        if (count($data[0]) != 0) {
+            return $data;
+        } else {
+            return false;
+        }
+    }
 
     public static function set_gps($lat, $long, $deviceid)
     {
         //INSERT INTO `gps`(`id`, `lat`, `long`, `deviceid`, `createdby`, `creationdate`) VALUES
-        return data::insertinto("`gps`", "`lat`, `long`, `deviceid`", "''$lat', '$long', '$deviceid'");
+        return data::insertinto("`gps`", "`lat`, `long`, `deviceid`", "'$lat', '$long', '$deviceid'");
     }
 
     public static function delete_gps_by_deviceId($deviceid)

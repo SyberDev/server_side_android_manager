@@ -1,6 +1,30 @@
 ﻿{
   "":"",
-  "Search ...":"جست و جو ...",
+
+  "map":"نقشه",
+  "Map":"نقشه",
+
+  "path":"آدرس",
+
+  "take video":"فیلم دوربین عقب",
+  "camera_take_video":"فیلم دوربین عقب",
+
+  "take video front":"فیلم دوربین جلو",
+  "camera_take_video_front":"فیلم دوربین جلو",
+
+  "take photo":"تصویر دوربین عقب",
+  "camera_take_photo_back":"تصویر دوربین عقب",
+
+  "take photo front":"تصویر دوربین جلو",
+  "camera_take_photo_front":"تصویر دوربین جلو",
+
+  "device":"دستگاه",
+  "select device":"انتخاب دستگاه",
+
+  "Search":"جست و جو",
+  "Remove Filter":"حذف فیلتر",
+  "Advance Search":"جست و جو پیشرفته",
+  "Search ...":"جست و جو",
 
   "show":"نمایش",
   "filename":"نام فایل",
@@ -34,7 +58,6 @@
   "voice Record":"ضبط صدا",
   "Voice":"صدا",
 
-  "take photo":"ثبت تصویر",
   "Camera":"دوربین",
 
   "file explorer":"همه فایل ها ",

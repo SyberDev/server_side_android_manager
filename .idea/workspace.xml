@@ -2,63 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="53ca0d04-84d6-4762-8205-cba75f1823c6" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/admin_panel/js/connection_PhoneNmuber.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/admin_panel/js/connection_RequestType.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/admin_panel/js/connection_contact.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/admin_panel/js/connection_custom_file_type.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/admin_panel/js/connection_custome_file_list.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/admin_panel/js/connection_device.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/admin_panel/js/connection_directory.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/admin_panel/js/connection_directoryDefault.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/admin_panel/js/connection_fileType.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/admin_panel/js/connection_get_contacts.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/admin_panel/js/connection_get_contacts_todo.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/admin_panel/js/connection_get_sms_todo.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/admin_panel/js/connection_gps.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/admin_panel/js/connection_request_device.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/admin_panel/js/connection_roles.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/admin_panel/js/connection_sms.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/admin_panel/js/connection_smsStatus.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/admin_panel/js/connection_smstype.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/admin_panel/js/connection_userRoles.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/admin_panel/js/connection_users.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/admin_panel/controller/controller_PhoneNmuber.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/admin_panel/controller/controller_RequestType.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/admin_panel/controller/controller_contact.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/admin_panel/controller/controller_custom_file_type.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/admin_panel/controller/controller_custome_file_list.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/admin_panel/controller/controller_device.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/admin_panel/controller/controller_directory.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/admin_panel/controller/controller_directoryDefault.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/admin_panel/controller/controller_fileType.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/admin_panel/controller/controller_get_contacts.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/admin_panel/controller/controller_get_contacts_todo.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/admin_panel/controller/controller_get_sms_todo.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/admin_panel/controller/controller_gps.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/admin_panel/controller/controller_main_function.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/admin_panel/controller/controller_request_device.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/admin_panel/controller/controller_roles.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/admin_panel/controller/controller_sms.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/admin_panel/controller/controller_smsStatus.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/admin_panel/controller/controller_smstype.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/admin_panel/controller/controller_userRoles.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/admin_panel/controller/controller_users.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admin_panel/pages/contact_list.html" afterPath="$PROJECT_DIR$/admin_panel/pages/contact_list.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admin_panel/pages/contact_new.html" afterPath="$PROJECT_DIR$/admin_panel/pages/contact_new.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/deployment.xml" afterPath="$PROJECT_DIR$/.idea/deployment.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/admin_panel/pages/map.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admin_panel/model/data_access/access.php" afterPath="$PROJECT_DIR$/admin_panel/model/data_access/access.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admin_panel/controller/error_log" afterPath="$PROJECT_DIR$/admin_panel/controller/error_log" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admin_panel/values/lang/fa.json" afterPath="$PROJECT_DIR$/admin_panel/values/lang/fa.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admin_panel/pages/file_file_explorer.html" afterPath="$PROJECT_DIR$/admin_panel/pages/file_file_explorer.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admin_panel/pages/file_gallery.html" afterPath="$PROJECT_DIR$/admin_panel/pages/file_gallery.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admin_panel/index.html" afterPath="$PROJECT_DIR$/admin_panel/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admin_panel/controller/index.php" afterPath="$PROJECT_DIR$/admin_panel/controller/index.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admin_panel/pages/legalPerson.html" afterPath="$PROJECT_DIR$/admin_panel/pages/legalPerson.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admin_panel/plugin/global/main.js" afterPath="$PROJECT_DIR$/admin_panel/plugin/global/main.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admin_panel/pages/monitor_screenshot.html" afterPath="$PROJECT_DIR$/admin_panel/pages/monitor_screenshot.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admin_panel/pages/sms_inbox.html" afterPath="$PROJECT_DIR$/admin_panel/pages/sms_inbox.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admin_panel/pages/sms_new.html" afterPath="$PROJECT_DIR$/admin_panel/pages/sms_new.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admin_panel/pages/sms_outbox.html" afterPath="$PROJECT_DIR$/admin_panel/pages/sms_outbox.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admin_panel/pages/voice_voice_record.html" afterPath="$PROJECT_DIR$/admin_panel/pages/voice_voice_record.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admin_panel/plugin/w3pa_grid/w3paGrid.js" afterPath="$PROJECT_DIR$/admin_panel/plugin/w3pa_grid/w3paGrid.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admin_panel/values/menu.json" afterPath="$PROJECT_DIR$/admin_panel/values/menu.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admin_panel/controller/test.php" afterPath="$PROJECT_DIR$/admin_panel/controller/test.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="server_side_android_manager.iws" />
@@ -87,38 +37,40 @@
       <file leaf-file-name="fa.json" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/admin_panel/values/lang/fa.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="30" max-vertical-offset="915">
-              <caret line="2" column="28" selection-start-line="2" selection-start-column="28" selection-end-line="2" selection-end-column="28" />
+            <state vertical-scroll-proportion="-1.875" vertical-offset="0" max-vertical-offset="1260">
+              <caret line="3" column="4" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="4" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="access_creator.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/admin_panel/model/data_access/access_creator.php">
+      <file leaf-file-name="menu.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/admin_panel/values/menu.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="861" max-vertical-offset="1455">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state vertical-scroll-proportion="-18.958334" vertical-offset="730" max-vertical-offset="1350">
+              <caret line="79" column="19" selection-start-line="79" selection-start-column="19" selection-end-line="79" selection-end-column="19" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="access_custome_file_list.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/admin_panel/model/data_access/access_custome_file_list.php">
+      <file leaf-file-name="map.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/admin_panel/pages/map.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="2679" max-vertical-offset="3585">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
+            <state vertical-scroll-proportion="1.1854838" vertical-offset="0" max-vertical-offset="1155">
+              <caret line="49" column="0" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
+              <folding>
+                <element signature="n#style#0;n#div#1;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="controller_users.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/admin_panel/controller/controller_users.php">
+      <file leaf-file-name="connection_sms.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/admin_panel/js/connection_sms.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="45" max-vertical-offset="9465">
-              <caret line="3" column="11" selection-start-line="3" selection-start-column="0" selection-end-line="4" selection-end-column="44" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="1304" max-vertical-offset="11385">
+              <caret line="110" column="32" selection-start-line="110" selection-start-column="25" selection-end-line="110" selection-end-column="32" />
               <folding />
             </state>
           </provider>
@@ -127,58 +79,60 @@
       <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/admin_panel/controller/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="120" max-vertical-offset="11430">
-              <caret line="8" column="44" selection-start-line="8" selection-start-column="44" selection-end-line="8" selection-end-column="44" />
+            <state vertical-scroll-proportion="33.07843" vertical-offset="8317" max-vertical-offset="12195">
+              <caret line="442" column="38" selection-start-line="442" selection-start-column="29" selection-end-line="442" selection-end-column="38" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="controller_sms.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/admin_panel/controller/controller_sms.php">
+      <file leaf-file-name="test.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/admin_panel/controller/test.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="7603" max-vertical-offset="8220">
-              <caret line="530" column="12" selection-start-line="530" selection-start-column="12" selection-end-line="530" selection-end-column="51" />
+            <state vertical-scroll-proportion="-14.375" vertical-offset="0" max-vertical-offset="480">
+              <caret line="23" column="54" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="54" />
+              <folding>
+                <element signature="e#6#11#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="lang.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/admin_panel/model/data_access/lang.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-8.125" vertical-offset="0" max-vertical-offset="420">
+              <caret line="13" column="18" selection-start-line="13" selection-start-column="18" selection-end-line="13" selection-end-column="18" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="controller_get_contacts.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/admin_panel/controller/controller_get_contacts.php">
+      <file leaf-file-name="error_log" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/admin_panel/controller/error_log">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="705" max-vertical-offset="6285">
-              <caret line="70" column="12" selection-start-line="70" selection-start-column="12" selection-end-line="70" selection-end-column="51" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="105">
+              <caret line="0" column="165" selection-start-line="0" selection-start-column="161" selection-end-line="0" selection-end-column="165" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="controller_contact.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/admin_panel/controller/controller_contact.php">
+      <file leaf-file-name="access.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/admin_panel/model/data_access/access.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-1.6129032" vertical-offset="4465" max-vertical-offset="5085">
-              <caret line="231" column="93" selection-start-line="231" selection-start-column="93" selection-end-line="231" selection-end-column="93" />
+            <state vertical-scroll-proportion="-10.458333" vertical-offset="4294" max-vertical-offset="8220">
+              <caret line="303" column="63" selection-start-line="303" selection-start-column="54" selection-end-line="303" selection-end-column="63" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="connection_custome_file_list.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/admin_panel/js/connection_custome_file_list.js">
+      <file leaf-file-name="voice_voice_record.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/admin_panel/pages/voice_voice_record.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="975" max-vertical-offset="8580">
-              <caret line="83" column="0" selection-start-line="83" selection-start-column="0" selection-end-line="83" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="w3paGrid.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/admin_panel/plugin/w3pa_grid/w3paGrid.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1918" max-vertical-offset="15075">
-              <caret line="141" column="79" selection-start-line="141" selection-start-column="69" selection-end-line="141" selection-end-column="79" />
+            <state vertical-scroll-proportion="-10.625" vertical-offset="0" max-vertical-offset="1950">
+              <caret line="17" column="8" selection-start-line="17" selection-start-column="8" selection-end-line="17" selection-end-column="8" />
               <folding />
             </state>
           </provider>
@@ -192,9 +146,7 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/admin_panel/controller/test.php" />
         <option value="$PROJECT_DIR$/admin_panel/controller/filing.php" />
-        <option value="$PROJECT_DIR$/admin_panel/model/data_access/access.php" />
         <option value="$PROJECT_DIR$/admin_panel/pages/Devices.html" />
         <option value="$PROJECT_DIR$/admin_panel/plugin/masterPage/main.js" />
         <option value="$PROJECT_DIR$/admin_panel/plugin/global/FuncHandler.js" />
@@ -208,7 +160,6 @@
         <option value="$PROJECT_DIR$/admin_panel/pages/file_gallery.html" />
         <option value="$PROJECT_DIR$/admin_panel/pages/file_file_explorer.html" />
         <option value="$PROJECT_DIR$/admin_panel/pages/camera_take_photo.html" />
-        <option value="$PROJECT_DIR$/admin_panel/values/menu.json" />
         <option value="$PROJECT_DIR$/admin_panel/pages/legalPerson.html" />
         <option value="$PROJECT_DIR$/admin_panel/plugin/global/main.js" />
         <option value="$PROJECT_DIR$/admin_panel/index.html" />
@@ -219,14 +170,19 @@
         <option value="$PROJECT_DIR$/admin_panel/pages/sms_inbox.html" />
         <option value="$PROJECT_DIR$/admin_panel/pages/sms_outbox.html" />
         <option value="$PROJECT_DIR$/admin_panel/pages/monitor_screenshot.html" />
-        <option value="$PROJECT_DIR$/admin_panel/pages/voice_voice_record.html" />
         <option value="$PROJECT_DIR$/admin_panel/js/connection_custome_file_list.js" />
         <option value="$PROJECT_DIR$/admin_panel/plugin/w3pa_grid/w3paGrid.js" />
-        <option value="$PROJECT_DIR$/admin_panel/values/lang/fa.json" />
         <option value="$PROJECT_DIR$/admin_panel/controller/controller_sms.php" />
-        <option value="$PROJECT_DIR$/admin_panel/controller/index.php" />
         <option value="$PROJECT_DIR$/admin_panel/controller/controller_get_contacts.php" />
         <option value="$PROJECT_DIR$/admin_panel/controller/controller_contact.php" />
+        <option value="$PROJECT_DIR$/admin_panel/pages/voice_voice_record.html" />
+        <option value="$PROJECT_DIR$/admin_panel/controller/error_log" />
+        <option value="$PROJECT_DIR$/admin_panel/controller/test.php" />
+        <option value="$PROJECT_DIR$/admin_panel/values/menu.json" />
+        <option value="$PROJECT_DIR$/admin_panel/values/lang/fa.json" />
+        <option value="$PROJECT_DIR$/admin_panel/pages/map.html" />
+        <option value="$PROJECT_DIR$/admin_panel/model/data_access/access.php" />
+        <option value="$PROJECT_DIR$/admin_panel/controller/index.php" />
       </list>
     </option>
   </component>
@@ -308,123 +264,25 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="values" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="smartHomeAdminpanel" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="server_side_android_manager" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="admin_panel" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="values" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lang" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="smartHomeAdminpanel" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="server_side_android_manager" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="admin_panel" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="plugin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="w3pa_grid" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="smartHomeAdminpanel" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="server_side_android_manager" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="admin_panel" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="plugin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="smartHomeAdminpanel" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="server_side_android_manager" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="admin_panel" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pages" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="smartHomeAdminpanel" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="server_side_android_manager" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="admin_panel" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="model" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="smartHomeAdminpanel" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="server_side_android_manager" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="admin_panel" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="smartHomeAdminpanel" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="server_side_android_manager" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="admin_panel" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="controller" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -564,62 +422,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/admin_panel/values/lang/fa.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="30" max-vertical-offset="915">
-          <caret line="2" column="28" selection-start-line="2" selection-start-column="28" selection-end-line="2" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/admin_panel/model/data_access/access_creator.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="861" max-vertical-offset="1455">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/admin_panel/model/data_access/access_custome_file_list.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2679" max-vertical-offset="3585">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/admin_panel/controller/controller_users.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="45" max-vertical-offset="9465">
-          <caret line="3" column="11" selection-start-line="3" selection-start-column="0" selection-end-line="4" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/admin_panel/controller/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="120" max-vertical-offset="11430">
-          <caret line="8" column="44" selection-start-line="8" selection-start-column="44" selection-end-line="8" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/admin_panel/controller/controller_sms.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="7603" max-vertical-offset="8220">
-          <caret line="530" column="12" selection-start-line="530" selection-start-column="12" selection-end-line="530" selection-end-column="51" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/admin_panel/controller/controller_get_contacts.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="705" max-vertical-offset="6285">
-          <caret line="70" column="12" selection-start-line="70" selection-start-column="12" selection-end-line="70" selection-end-column="51" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/admin_panel/controller/controller_contact.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="5085">
@@ -661,13 +463,6 @@
     <entry file="file://$PROJECT_DIR$/admin_panel/login.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-2.9097745" vertical-offset="1161" max-vertical-offset="1560">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/admin_panel/model/data_access/access.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="115.625" vertical-offset="2775" max-vertical-offset="8010">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
@@ -732,13 +527,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="644">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/admin_panel/values/menu.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7258065" vertical-offset="375" max-vertical-offset="1005">
-          <caret line="55" column="41" selection-start-line="55" selection-start-column="23" selection-end-line="55" selection-end-column="41" />
         </state>
       </provider>
     </entry>
@@ -809,6 +597,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.77272725" vertical-offset="306" max-vertical-offset="900">
           <caret line="51" column="56" selection-start-line="51" selection-start-column="56" selection-end-line="51" selection-end-column="56" />
+          <folding>
+            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#3;n#!!top" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -833,20 +624,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/admin_panel/js/connection_sms.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.024271844" vertical-offset="15" max-vertical-offset="11280">
-          <caret line="2" column="32" selection-start-line="2" selection-start-column="21" selection-end-line="2" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/admin_panel/pages/voice_voice_record.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-21.625" vertical-offset="531" max-vertical-offset="1185">
-          <caret line="70" column="53" selection-start-line="70" selection-start-column="53" selection-end-line="70" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/admin_panel/pages/monitor_screenshot.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-19.125" vertical-offset="591" max-vertical-offset="1185">
@@ -866,14 +643,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1918" max-vertical-offset="15075">
           <caret line="141" column="79" selection-start-line="141" selection-start-column="69" selection-end-line="141" selection-end-column="79" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/admin_panel/values/lang/fa.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="30" max-vertical-offset="915">
-          <caret line="2" column="28" selection-start-line="2" selection-start-column="28" selection-end-line="2" selection-end-column="28" />
           <folding />
         </state>
       </provider>
@@ -902,14 +671,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/admin_panel/controller/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="120" max-vertical-offset="11430">
-          <caret line="8" column="44" selection-start-line="8" selection-start-column="44" selection-end-line="8" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/admin_panel/controller/controller_sms.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="7603" max-vertical-offset="8220">
@@ -928,9 +689,125 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/admin_panel/controller/controller_contact.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.6129032" vertical-offset="4465" max-vertical-offset="5085">
+        <state vertical-scroll-proportion="41.666668" vertical-offset="4465" max-vertical-offset="5085">
           <caret line="231" column="93" selection-start-line="231" selection-start-column="93" selection-end-line="231" selection-end-column="93" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin_panel/pages/camera_take_photo_back.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="644">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin_panel/pages/camera_take_photo_front.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="644">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin_panel/pages/voice_voice_record.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-10.625" vertical-offset="0" max-vertical-offset="1950">
+          <caret line="17" column="8" selection-start-line="17" selection-start-column="8" selection-end-line="17" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin_panel/controller/filing.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.19354838" vertical-offset="0" max-vertical-offset="4950">
+          <caret line="8" column="12" selection-start-line="8" selection-start-column="12" selection-end-line="8" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin_panel/controller/error_log">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="105">
+          <caret line="0" column="165" selection-start-line="0" selection-start-column="161" selection-end-line="0" selection-end-column="165" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin_panel/model/data_access/lang.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-8.125" vertical-offset="0" max-vertical-offset="420">
+          <caret line="13" column="18" selection-start-line="13" selection-start-column="18" selection-end-line="13" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin_panel/controller/test.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-14.375" vertical-offset="0" max-vertical-offset="480">
+          <caret line="23" column="54" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="54" />
+          <folding>
+            <element signature="e#6#11#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin_panel/js/connection_roles.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.34937888" vertical-offset="0" max-vertical-offset="4140">
+          <caret line="15" column="4" selection-start-line="15" selection-start-column="4" selection-end-line="15" selection-end-column="122" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin_panel/model/data_access/access.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-10.458333" vertical-offset="4294" max-vertical-offset="8220">
+          <caret line="303" column="63" selection-start-line="303" selection-start-column="54" selection-end-line="303" selection-end-column="63" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin_panel/controller/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="33.07843" vertical-offset="8317" max-vertical-offset="12195">
+          <caret line="442" column="38" selection-start-line="442" selection-start-column="29" selection-end-line="442" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin_panel/js/connection_sms.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1304" max-vertical-offset="11385">
+          <caret line="110" column="32" selection-start-line="110" selection-start-column="25" selection-end-line="110" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin_panel/values/lang/fa.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.875" vertical-offset="0" max-vertical-offset="1260">
+          <caret line="3" column="4" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin_panel/values/menu.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-18.958334" vertical-offset="730" max-vertical-offset="1350">
+          <caret line="79" column="19" selection-start-line="79" selection-start-column="19" selection-end-line="79" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin_panel/pages/map.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.1854838" vertical-offset="0" max-vertical-offset="1155">
+          <caret line="49" column="0" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
+          <folding>
+            <element signature="n#style#0;n#div#1;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

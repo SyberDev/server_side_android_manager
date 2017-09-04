@@ -2,6 +2,13 @@
   "items":[ {
     "name":"General",
     "items":[{
+      "icon":"fa fa-mobile",
+      "name":"select device",
+      "items":[{
+        "link":"#pages/device",
+        "name":"select device"
+      }]
+    },{
       "icon":"fa fa-comments",
       "name":"SMS",
       "items":[{
@@ -39,8 +46,17 @@
       "icon":"fa fa-camera",
       "name":"Camera",
       "items":[{
-        "link":"#pages/camera_take_photo",
+        "link":"#pages/camera_take_photo_front",
+        "name":"take photo front"
+      },{
+        "link":"#pages/camera_take_photo_back",
         "name":"take photo"
+      },{
+        "link":"#pages/camera_take_video_front",
+        "name":"take video front"
+      },{
+        "link":"#pages/camera_take_video",
+        "name":"take video"
       }]
     },{
       "icon":"fa fa-microphone",
@@ -55,6 +71,13 @@
       "items":[{
         "link":"#pages/monitor_screenshot",
         "name":"Screen shot"
+      }]
+    },{
+      "icon":"fa fa-map",
+      "name":"Map",
+      "items":[{
+        "link":"#pages/map",
+        "name":"map"
       }]
     }]
   }]
