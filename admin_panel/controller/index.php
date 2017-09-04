@@ -32,6 +32,14 @@ switch ($_REQUEST["act"]) {
         $_SESSION["device"]["id"] = $_REQUEST["id"];
         controller_main_function::send_msg(lang::$success, lang::$message, "success");
         break;
+    case 'check_is_select_device':
+        if(isset($_SESSION["device"]["id"])){
+            $result = true;
+        }else{
+            $result = false;
+        }
+        send_result($result);
+        break;
 
     case 'logout':
         try {
