@@ -6,7 +6,7 @@
 // * Time: 13:32
 // */
 //
-//require_once "filing.php";
+require_once "filing.php";
 //
 //echo "hi peyman test file class <br> <hr> <br> ";
 //
@@ -21,6 +21,19 @@
 //echo filing::remove_dir("asghar");
 
 
-$dd= '"'.date('Y-m-d H:i:s',(1504386668446/1000)).'"';
 
-echo $dd;
+//$dd= '"'.date('Y-m-d H:i:s',(1504386668446/1000)).'"';
+//
+//echo $dd;
+
+//echo $_FILES["fileToUpload"]["name"];
+//echo $_REQUEST["id"];
+//print_r($_POST);
+//filing::$root="device_22/";
+//$result = filing::upload_file("uploaded_file");
+
+print_r($_REQUEST);
+//var_dump($_FILES);
+
+//echo "hi";
+//print_r($_FILES);

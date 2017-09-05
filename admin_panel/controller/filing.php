@@ -11,35 +11,41 @@ class filing
 
     public static $root = "file_explorer/";
 
-    public static function upload_file()
+    public static function upload_file($change_name=null)
     {
+        if($change_name!='' || null){
+            $key_name = $change_name;
+        }else{
+            $key_name = "fileToUpload";
+        }
+        $result_str='';
         $target_dir = self::$root;
-        $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
-        echo $target_file ;
+        $target_file = $target_dir . basename($_FILES[$key_name]["name"]);
+        $result_str= $target_file ;
         $uploadOk = 1;
         $imageFileType = pathinfo($target_file, PATHINFO_EXTENSION);
         //__________________ Check if image file is a actual image or fake image
 
         if (isset($_POST["submit"])) {
-            $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+            $check = getimagesize($_FILES[$key_name]["tmp_name"]);
             if ($check !== false) {
-                echo "File is an image - " . $check["mime"] . ".";
+                $result_str.= "File is an image - " . $check["mime"] . ".";
                 $uploadOk = 1;
             } else {
-                echo "File is not an image.";
+                $result_str.= "File is not an image.";
                 $uploadOk = 0;
             }
         }
         //___________________ Check if file already exists
         if (file_exists($target_file)) {
-            echo "Sorry, file already exists.";
+            $result_str.= "Sorry, file already exists.";
             $uploadOk = 0;
         }
         //___________________ Check file size
-        if ($_FILES["fileToUpload"]["size"] > 500000) {
-            echo "Sorry, your file is too large.";
-            $uploadOk = 0;
-        }
+//        if ($_FILES[$key_name]["size"] > 10000000) {
+//            $result_str.= "Sorry, your file is too large.";
+//            $uploadOk = 0;
+//        }
 //        //___________________ Allow certain file formats
 //        if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
 //            && $imageFileType != "gif"
@@ -49,14 +55,17 @@ class filing
 //        }
         //___________________ Check if $uploadOk is set to 0 by an error
         if ($uploadOk == 0) {
-            echo "Sorry, your file was not uploaded.";
+            $result_str.= "Sorry, your file was not uploaded.";
+            //echo $result_str;
             //___________________ if everything is ok, try to upload file
         } else {
-            if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-                echo "The file " . basename($_FILES["fileToUpload"]["name"]) . " has been uploaded.";
-                return basename($_FILES["fileToUpload"]["name"]);
+            if (move_uploaded_file($_FILES[$key_name]["tmp_name"], $target_file)) {
+                $result_str.= "The file " . basename($_FILES[$key_name]["name"]) . " has been uploaded.";
+                //echo $result_str;
+                return basename($_FILES[$key_name]["name"]);
             } else {
-                echo "Sorry, there was an error uploading your file.";
+                $result_str.= "Sorry, there was an error uploading your file.";
+                //echo $result_str;
             }
         }
         return 0;

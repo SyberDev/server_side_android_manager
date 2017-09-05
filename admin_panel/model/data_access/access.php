@@ -383,10 +383,10 @@ class access
         return data::update("`directory`", "`isDownload`=$isdownload,`downloadDate`=CURRENT_TIMESTAMP", "`deviceId`= '$deviceId'");
     }
 
-    public static function edit_directory_isDownload_by_Id($id, $isdownload)
+    public static function edit_directory_isDownload_by_Id($id,$url, $isdownload)
     {
         //`id`,`name`,`fileType`,`parent`,`deviceId`,`isDownload`,`downloadDate`,`creationDate`,`createdBy`
-        return data::update("`directory`", "`isDownload`=$isdownload,`downloadDate`=CURRENT_TIMESTAMP", "`id`= $id");
+        return data::update("`directory`", "`url` = '$url' ,`isDownload`=$isdownload,`downloadDate`=CURRENT_TIMESTAMP", "`id`= $id");
     }
 
     public static function set_directory($name, $fileType, $parent, $deviceId)

