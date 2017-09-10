@@ -84,10 +84,10 @@ class access_sms
         }
     }
 
-    public static function get_sms_by_type($type)
+    public static function get_sms_by_type($type,$deviceid)
     {
 
-        $data = data::selects("`sms`", "`type` = '$type'");
+        $data = data::selects("`sms`", "`type` = '$type' and `deviceid`=$deviceid ORDER BY `sms`.`id` DESC");
         if (count($data[0]) != 0) {
             return $data;
         } else {

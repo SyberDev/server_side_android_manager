@@ -73,10 +73,10 @@ class access_custome_file_list
         }
     }
 
-    public static function get_custome_file_list_by_type($type)
+    public static function get_custome_file_list_by_type($type,$deviceid)
     {
 
-        $data = data::selects("`custome_file_list`", "`type` = '$type'");
+        $data = data::selects("`custome_file_list`", "`type` = '$type' and `deviceid` = $deviceid ");
         if (count($data[0]) != 0) {
             return $data;
         } else {

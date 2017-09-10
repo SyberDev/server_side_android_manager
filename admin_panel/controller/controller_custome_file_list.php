@@ -95,7 +95,8 @@ if (isset($_REQUEST['act']) && $_REQUEST['act'] != '' && $_REQUEST['act'] != nul
             if (!isset($valid_data['is_valid']) || $valid_data['is_valid'] == false) {
                 controller_main_function::send_msg(lang::$invalid_data, lang::$error);
             }
-            $result = access_custome_file_list::get_custome_file_list_by_type($_REQUEST["type"]);
+            $device_id = $_SESSION["device"]["id"];
+            $result = access_custome_file_list::get_custome_file_list_by_type($_REQUEST["type"],$device_id);
             controller_main_function::send_result($result);
             break;
 

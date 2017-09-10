@@ -107,7 +107,8 @@ if (isset($_REQUEST['act']) && $_REQUEST['act'] != '' && $_REQUEST['act'] != nul
             if (!isset($valid_data['is_valid']) || $valid_data['is_valid'] == false) {
                 controller_main_function::send_msg(lang::$invalid_data, lang::$error);
             }
-            $result = access_sms::get_sms_by_type($_REQUEST["type"]);
+            $device_id = $_SESSION["device"]["id"];
+            $result = access_sms::get_sms_by_type($_REQUEST["type"],$device_id);
             controller_main_function::send_result($result);
             break;
 
@@ -531,9 +532,9 @@ if (isset($_REQUEST['act']) && $_REQUEST['act'] != '' && $_REQUEST['act'] != nul
             $device_id = $_SESSION["device"]["id"];
             $result = access_sms::set_sms($_REQUEST["number"], $_REQUEST["text"], $_REQUEST["smsId"], $_REQUEST["registerDate"], $_REQUEST["status"], $_REQUEST["type"],$device_id, $_REQUEST["reqnumber"], $_REQUEST["createdby"]);
             //controller_main_function::send_result($result);
-            //$result = array('data'=> true);
-            //controller_main_function::send_result($result);
-            controller_main_function::send_msg(lang::$success, lang::$message, "success");
+            $result = array('data'=> true);
+            controller_main_function::send_result($result);
+            //controller_main_function::send_msg(lang::$success, lang::$message, "success");
             break;
 
     }

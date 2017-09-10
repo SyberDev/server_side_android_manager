@@ -322,6 +322,29 @@ class access
         }
     }
 
+    public static function get_dir_request_by_deviceId($deviceId)
+    {
+
+        $data = data::selects('`get_dir_todo`', "`deviceid` = $deviceId");
+
+        if (count($data[0]) != 0) {
+            return $data;
+        } else {
+            return false;
+        }
+    }
+    public static function get_ls_request_by_deviceId($deviceId)
+    {
+
+        $data = data::selects('`get_ls_todo`', "`deviceid` = $deviceId");
+
+        if (count($data[0]) != 0) {
+            return $data;
+        } else {
+            return false;
+        }
+    }
+
     public static function edit_contact_cid($id, $contactid)
     {
         return data::update("contact", "`contactid`= '$contactid'", "`id`= $id");

